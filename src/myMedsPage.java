@@ -740,9 +740,9 @@ public class myMedsPage extends javax.swing.JFrame {
         CL.addElement(medName);
 
         
-        if(!rxNumber.isEmpty()){
+        if(rxNumber != null){
                 CL.addElement("RX Number:  " + rxNumber);
-            }else if(rxNumber.isEmpty()){
+            }else if(rxNumber == null){
                 CL.addElement("RX Number: Not Provided");
             }
         CL.addElement(dosageNumber + " " + dosageType + " " +  frequencyNumber + " Times " + frequencyType);
@@ -861,6 +861,8 @@ public class myMedsPage extends javax.swing.JFrame {
 
                 pst.close();
                 rs.close();
+                
+                conn.commit();
             }
             catch(Exception e)
             {
@@ -922,6 +924,8 @@ public class myMedsPage extends javax.swing.JFrame {
 
                 pst.close();
                 rs.close();
+                
+                conn.commit();
             }
             catch(Exception e)
             {
@@ -1033,9 +1037,9 @@ public class myMedsPage extends javax.swing.JFrame {
         
         String dosage = (String.valueOf(dosageNumber) + " " + dosageType);
 
-        if(!rxNumber.isEmpty()){
+        if(rxNumber != null){
             rx = rxNumber;
-        }else if(rxNumber.isEmpty()){
+        }else if(rxNumber == null){
             rx = "null";
         }
             
@@ -5125,6 +5129,8 @@ public class myMedsPage extends javax.swing.JFrame {
 
                 pst.close();
                 rs.close();
+                
+                
             }
             catch(Exception e)
             {
