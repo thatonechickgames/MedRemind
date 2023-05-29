@@ -312,7 +312,34 @@ public class myMedsPage extends javax.swing.JFrame {
         }
     }
     
-    
+    private void toUpcomingReminders(){
+        
+        
+        welcomePanel.setVisible(false);
+        medsPanel.setVisible(false);
+        icePanel.setVisible(false);
+        upcomingRemindersPanel.setVisible(true);
+        profileOptionsPanel.setVisible(false);
+        
+        profileOptionsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile Options Unclicked.png")));
+        iceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICE Unclicked.png")));
+        myMedsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/My Meds Unclicked.png")));
+        upcomingRemindersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Upcoming Reminders Clicked.png")));
+    }
+    private void toProfileOptions(){
+        
+        profileOptionsPanel.setVisible(true);
+        
+        welcomePanel.setVisible(false);
+        medsPanel.setVisible(false);
+        icePanel.setVisible(false);
+        upcomingRemindersPanel.setVisible(false);
+        
+        profileOptionsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile Options Clicked.png")));
+        iceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICE Unclicked.png")));
+        myMedsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/My Meds Unclicked.png")));
+        upcomingRemindersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Upcoming Reminders Unclicked.png")));
+    }
     private void backToIceHome(){
         medsPanel.setVisible(false);
         icePanel.setVisible(true);
@@ -570,6 +597,7 @@ public class myMedsPage extends javax.swing.JFrame {
                     if(ag.equalsIgnoreCase("yes")){
                         yesButtonAgainEdit.setSelected(true);
                         reminderLabelEdit.setVisible(true);
+                        jLabel18.setVisible(true);
                     }else if(ag.equalsIgnoreCase("no")){
                         noButtonAgainEdit.setSelected(true);
                     }
@@ -774,24 +802,31 @@ public class myMedsPage extends javax.swing.JFrame {
     private void setContactConfirmList(String contactName, String contactPhone, String contactEmail, String contactRelation){
         CECL.clear();
         contactConfirmList.setModel(CECL);
-        CECL.addElement("Emergency Contact: " + contactName);
+        CECL.addElement("Emergency Contact:");
+        CECL.addElement(contactName);
         
         if(!contactPhone.isEmpty()){
-            CECL.addElement("Phone Number: " + contactPhone);
+            CECL.addElement("Phone Number:");
+            CECL.addElement(contactPhone);
         }else if(contactPhone.isEmpty()){
-            CECL.addElement("Phone Number: Not Provided");
+            CECL.addElement("Phone Number:");
+            CECL.addElement("Not Provided");
         }
         
         if(!contactEmail.isEmpty()){
-            CECL.addElement("Email Address: " + contactEmail);
+            CECL.addElement("Email Address:");
+            CECL.addElement(contactEmail);
         }else if(contactEmail.isEmpty()){
-            CECL.addElement("Email Address: Not Provided");
+            CECL.addElement("Email Address:");
+            CECL.addElement("Not Provided");
         }
         
         if(!contactRelation.isEmpty()){
-            CECL.addElement("Relationship: " + contactRelation);
+            CECL.addElement("Relationship:");
+            CECL.addElement(contactRelation);
         }else if(contactRelation.isEmpty()){
-            CECL.addElement("Relationship: Not Provided");
+            CECL.addElement("Relationship:");
+            CECL.addElement("Not Provided");
         }
         
         contactConfirmList.setModel(CECL);
@@ -862,7 +897,7 @@ public class myMedsPage extends javax.swing.JFrame {
                 pst.close();
                 rs.close();
                 
-                conn.commit();
+                
             }
             catch(Exception e)
             {
@@ -925,7 +960,7 @@ public class myMedsPage extends javax.swing.JFrame {
                 pst.close();
                 rs.close();
                 
-                conn.commit();
+                
             }
             catch(Exception e)
             {
@@ -937,18 +972,23 @@ public class myMedsPage extends javax.swing.JFrame {
     public void setDocConfirmList(String docName, String docPhone, String docSpec){
         CDCL.clear();
         docConfirmList.setModel(CDCL);
-        CDCL.addElement("Doctor: " + docName);
+        CDCL.addElement("Doctor:");
+        CDCL.addElement(docName);
         
         if(!docPhone.isEmpty()){
-            CDCL.addElement("Phone Number: " + docPhone);
+            CDCL.addElement("Phone Number:");
+            CDCL.addElement(docPhone);
         }else if(docPhone.isEmpty()){
-            CDCL.addElement("Phone Number: Not Provided");
+            CDCL.addElement("Phone Number:");
+            CDCL.addElement("Not Provided");
         }
         
         if(!docSpec.isEmpty()){
-            CDCL.addElement("Specialty: " + docSpec);
+            CDCL.addElement("Specialty:");
+            CDCL.addElement(docSpec);
         }else if(docSpec.isEmpty()){
-            CDCL.addElement("Specialty: Not Provided");
+            CDCL.addElement("Specialty:");
+            CDCL.addElement("Not Provided");
         }
         
         docConfirmList.setModel(CDCL);
@@ -1284,8 +1324,7 @@ public class myMedsPage extends javax.swing.JFrame {
         refillsYesNo = new javax.swing.ButtonGroup();
         middlePanel01 = new javax.swing.JPanel();
         welcomePanel = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         medsPanel = new javax.swing.JPanel();
         myMedsListPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1395,6 +1434,7 @@ public class myMedsPage extends javax.swing.JFrame {
         yesButtonAgainEdit = new javax.swing.JToggleButton();
         noButtonAgainEdit = new javax.swing.JToggleButton();
         reminderLabelEdit = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         icePanel = new javax.swing.JPanel();
         contactListPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -1458,18 +1498,18 @@ public class myMedsPage extends javax.swing.JFrame {
         docSpecBackButton = new javax.swing.JButton();
         docSpecCancelButton = new javax.swing.JButton();
         addDocConfirmPanel = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        docConfirmList = new javax.swing.JList<>();
         docConfirmBackButton = new javax.swing.JButton();
         docConfirmConfirmButton = new javax.swing.JButton();
         docConfirmCancelButton = new javax.swing.JButton();
-        contactInfoPanel = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
+        docConfirmList = new javax.swing.JList<>();
+        contactInfoPanel = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
         contactInfoList = new javax.swing.JList<>();
         contactEditButton = new javax.swing.JButton();
         contactInfoBackButton = new javax.swing.JButton();
         doctorInfoPanel = new javax.swing.JPanel();
-        jScrollPane9 = new javax.swing.JScrollPane();
+        jScrollPane11 = new javax.swing.JScrollPane();
         doctorInfoList = new javax.swing.JList<>();
         docEditButton = new javax.swing.JButton();
         docInfoBackButton = new javax.swing.JButton();
@@ -1495,6 +1535,10 @@ public class myMedsPage extends javax.swing.JFrame {
         docEditBackButton = new javax.swing.JButton();
         docEditConfirmButton = new javax.swing.JButton();
         docEditCancelButton = new javax.swing.JButton();
+        profileOptionsPanel = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        upcomingRemindersPanel = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         titleBar = new javax.swing.JLabel();
         myMedsButton = new javax.swing.JButton();
@@ -1513,35 +1557,22 @@ public class myMedsPage extends javax.swing.JFrame {
 
         welcomePanel.setBackground(new java.awt.Color(255, 232, 214));
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Press ICE or My Meds Buttons");
-
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("This is the welcome panel");
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Welcome Panel.png"))); // NOI18N
 
         javax.swing.GroupLayout welcomePanelLayout = new javax.swing.GroupLayout(welcomePanel);
         welcomePanel.setLayout(welcomePanelLayout);
         welcomePanelLayout.setHorizontalGroup(
             welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(welcomePanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomePanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addGap(0, 0, 0))
         );
         welcomePanelLayout.setVerticalGroup(
             welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomePanelLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(233, 233, 233))
+            .addGroup(welcomePanelLayout.createSequentialGroup()
+                .addComponent(jLabel27)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         middlePanel01.add(welcomePanel, "card2");
@@ -1561,7 +1592,7 @@ public class myMedsPage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(medList);
 
         medList.setBackground(new java.awt.Color(107, 112, 92));
-        medList.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        medList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         medList.setForeground(new java.awt.Color(255, 232, 214));
         medList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         medList.setSelectionBackground(new java.awt.Color(221, 190, 169));
@@ -1582,14 +1613,20 @@ public class myMedsPage extends javax.swing.JFrame {
             }
         });
 
-        editButton.setText("EDIT");
+        editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button.png"))); // NOI18N
+        editButton.setBorderPainted(false);
+        editButton.setContentAreaFilled(false);
+        editButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button Clicked.png"))); // NOI18N
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("DELETE");
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete Button.png"))); // NOI18N
+        deleteButton.setBorderPainted(false);
+        deleteButton.setContentAreaFilled(false);
+        deleteButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete Button Clicked.png"))); // NOI18N
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -1601,34 +1638,30 @@ public class myMedsPage extends javax.swing.JFrame {
         myMedsListPanelLayout.setHorizontalGroup(
             myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myMedsListPanelLayout.createSequentialGroup()
-                .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(80, 80, 80)
+                .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(myMedsListPanelLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(addNewMedButton))
-                    .addGroup(myMedsListPanelLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(myMedsListPanelLayout.createSequentialGroup()
-                                .addComponent(editButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(deleteButton))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addNewMedButton))
+                .addGap(80, 80, 80))
             .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 510, Short.MAX_VALUE))
+                .addGap(0, 516, Short.MAX_VALUE))
         );
         myMedsListPanelLayout.setVerticalGroup(
             myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myMedsListPanelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editButton)
-                    .addComponent(deleteButton))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addComponent(addNewMedButton)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(myMedsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 600, Short.MAX_VALUE))
         );
@@ -1644,31 +1677,43 @@ public class myMedsPage extends javax.swing.JFrame {
         nameInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         nameInstruct.setForeground(new java.awt.Color(0, 0, 0));
         nameInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nameInstruct.setText("Enter the name of the medication:");
+        nameInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Med Name Panel.png"))); // NOI18N
 
         medNameIn.setBackground(new java.awt.Color(107, 112, 92));
         medNameIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        medNameIn.setForeground(new java.awt.Color(255, 232, 214));
+        medNameIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         nameNextButton.setBackground(new java.awt.Color(107, 112, 92));
         nameNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         nameNextButton.setForeground(new java.awt.Color(221, 190, 169));
-        nameNextButton.setText("NEXT");
-        nameNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nameNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        nameNextButton.setBorderPainted(false);
+        nameNextButton.setContentAreaFilled(false);
         nameNextButton.setEnabled(false);
+        nameNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        nameNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         nameNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameNextButtonActionPerformed(evt);
             }
         });
 
-        nameBackButton.setText("BACK");
+        nameBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        nameBackButton.setBorderPainted(false);
+        nameBackButton.setContentAreaFilled(false);
+        nameBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        nameBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         nameBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameBackButtonActionPerformed(evt);
             }
         });
 
-        nameCancelButton.setText("CANCEL");
+        nameCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        nameCancelButton.setContentAreaFilled(false);
+        nameCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        nameCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         nameCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameCancelButtonActionPerformed(evt);
@@ -1680,36 +1725,33 @@ public class myMedsPage extends javax.swing.JFrame {
         medNamePanelLayout.setHorizontalGroup(
             medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(medNamePanelLayout.createSequentialGroup()
-                .addGroup(medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(80, 80, 80)
+                .addGroup(medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(medNamePanelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(medNamePanelLayout.createSequentialGroup()
-                                .addComponent(nameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(nameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nameInstruct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(medNameIn))))
+                        .addComponent(nameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameInstruct, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(medNameIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(medNamePanelLayout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(nameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(100, 100, 100))
+                        .addGap(50, 50, 50)
+                        .addComponent(nameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         medNamePanelLayout.setVerticalGroup(
             medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, medNamePanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
                 .addComponent(nameInstruct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addComponent(medNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
-                .addGroup(medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nameNextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(nameBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(44, 44, 44)
-                .addComponent(nameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addGap(50, 50, 50)
+                .addComponent(medNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(medNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(nameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         medsPanel.add(medNamePanel, "card2");
@@ -1723,30 +1765,42 @@ public class myMedsPage extends javax.swing.JFrame {
         rxNumInst.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         rxNumInst.setForeground(new java.awt.Color(0, 0, 0));
         rxNumInst.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rxNumInst.setText("Enter the Prescription Number:");
+        rxNumInst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RX Number Panel.png"))); // NOI18N
 
         rxNumberIn.setBackground(new java.awt.Color(107, 112, 92));
         rxNumberIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        rxNumberIn.setForeground(new java.awt.Color(255, 232, 214));
 
         rxNumberNextButton.setBackground(new java.awt.Color(107, 112, 92));
         rxNumberNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         rxNumberNextButton.setForeground(new java.awt.Color(221, 190, 169));
-        rxNumberNextButton.setText("NEXT");
+        rxNumberNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         rxNumberNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rxNumberNextButton.setBorderPainted(false);
+        rxNumberNextButton.setContentAreaFilled(false);
+        rxNumberNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        rxNumberNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         rxNumberNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rxNumberNextButtonActionPerformed(evt);
             }
         });
 
-        rxNumberBackButton.setText("BACK");
+        rxNumberBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        rxNumberBackButton.setBorderPainted(false);
+        rxNumberBackButton.setContentAreaFilled(false);
+        rxNumberBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        rxNumberBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         rxNumberBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rxNumberBackButtonActionPerformed(evt);
             }
         });
 
-        rxNumberCancelButton.setText("CANCEL");
+        rxNumberCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        rxNumberCancelButton.setContentAreaFilled(false);
+        rxNumberCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        rxNumberCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         rxNumberCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rxNumberCancelButtonActionPerformed(evt);
@@ -1758,34 +1812,33 @@ public class myMedsPage extends javax.swing.JFrame {
         rxNumberPanelLayout.setHorizontalGroup(
             rxNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rxNumberPanelLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addGap(80, 80, 80)
                 .addGroup(rxNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(rxNumberPanelLayout.createSequentialGroup()
-                        .addComponent(rxNumberBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rxNumberBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rxNumberNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rxNumInst, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                    .addComponent(rxNumberIn))
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rxNumberPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rxNumberCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(157, 157, 157))
+                        .addComponent(rxNumberNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rxNumInst)
+                    .addComponent(rxNumberIn)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rxNumberPanelLayout.createSequentialGroup()
+                        .addComponent(rxNumberCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
+                .addGap(80, 80, 80))
         );
         rxNumberPanelLayout.setVerticalGroup(
             rxNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rxNumberPanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
                 .addComponent(rxNumInst)
-                .addGap(104, 104, 104)
+                .addGap(50, 50, 50)
                 .addComponent(rxNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
+                .addGap(60, 60, 60)
                 .addGroup(rxNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rxNumberNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rxNumberBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(rxNumberCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                    .addComponent(rxNumberNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rxNumberBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(rxNumberCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         medsPanel.add(rxNumberPanel, "card2");
@@ -1799,18 +1852,23 @@ public class myMedsPage extends javax.swing.JFrame {
         dosageInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         dosageInstruct.setForeground(new java.awt.Color(0, 0, 0));
         dosageInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dosageInstruct.setText("Enter the Dosage Information:");
+        dosageInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Dosage Panel.png"))); // NOI18N
 
         dosageNumberIn.setBackground(new java.awt.Color(107, 112, 92));
         dosageNumberIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        dosageNumberIn.setForeground(new java.awt.Color(255, 232, 214));
         dosageNumberIn.setToolTipText("Enter a number for the dosage.");
 
         dosageNextButton.setBackground(new java.awt.Color(107, 112, 92));
         dosageNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         dosageNextButton.setForeground(new java.awt.Color(255, 232, 214));
-        dosageNextButton.setText("NEXT");
+        dosageNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         dosageNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        dosageNextButton.setBorderPainted(false);
+        dosageNextButton.setContentAreaFilled(false);
         dosageNextButton.setEnabled(false);
+        dosageNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        dosageNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         dosageNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosageNextButtonActionPerformed(evt);
@@ -1823,14 +1881,22 @@ public class myMedsPage extends javax.swing.JFrame {
         dosageTypeIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MG", "Tablet(s)", "Capsule(s)", "ML", "Injection(s)", "Puff(s)", "Application(s)", "Drop(s)" }));
         dosageTypeIn.setToolTipText("Select the type of dosage");
 
-        dosageBackButton.setText("BACK");
+        dosageBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        dosageBackButton.setBorderPainted(false);
+        dosageBackButton.setContentAreaFilled(false);
+        dosageBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        dosageBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         dosageBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosageBackButtonActionPerformed(evt);
             }
         });
 
-        dosageCancelButton.setText("CANCEL");
+        dosageCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        dosageCancelButton.setBorderPainted(false);
+        dosageCancelButton.setContentAreaFilled(false);
+        dosageCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        dosageCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         dosageCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosageCancelButtonActionPerformed(evt);
@@ -1842,40 +1908,38 @@ public class myMedsPage extends javax.swing.JFrame {
         dosagePanelLayout.setHorizontalGroup(
             dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dosagePanelLayout.createSequentialGroup()
-                .addGroup(dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(80, 80, 80)
+                .addGroup(dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(dosagePanelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(dosagePanelLayout.createSequentialGroup()
-                                .addComponent(dosageBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dosageNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(dosageInstruct, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dosagePanelLayout.createSequentialGroup()
-                                .addComponent(dosageNumberIn)
-                                .addGap(18, 18, 18)
-                                .addComponent(dosageTypeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(dosageBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dosageNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dosageInstruct)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dosagePanelLayout.createSequentialGroup()
+                        .addComponent(dosageNumberIn)
+                        .addGap(18, 18, 18)
+                        .addComponent(dosageTypeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(dosagePanelLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(dosageCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(dosageCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         dosagePanelLayout.setVerticalGroup(
             dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dosagePanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
                 .addComponent(dosageInstruct)
-                .addGap(104, 104, 104)
+                .addGap(50, 50, 50)
                 .addGroup(dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dosageNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dosageTypeIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(115, 115, 115)
+                .addGap(60, 60, 60)
                 .addGroup(dosagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dosageNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dosageBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(dosageCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(dosageNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dosageBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(dosageCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         medsPanel.add(dosagePanel, "card2");
@@ -1889,24 +1953,31 @@ public class myMedsPage extends javax.swing.JFrame {
         frequencyInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         frequencyInstruct.setForeground(new java.awt.Color(0, 0, 0));
         frequencyInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        frequencyInstruct.setText("How often do you take this medication?");
+        frequencyInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frequency Panel.png"))); // NOI18N
 
         frequencyNumberIn.setBackground(new java.awt.Color(107, 112, 92));
         frequencyNumberIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        frequencyNumberIn.setForeground(new java.awt.Color(255, 232, 214));
         frequencyNumberIn.setToolTipText("");
+        frequencyNumberIn.setPreferredSize(new java.awt.Dimension(130, 45));
 
         frequencyTypeIn.setBackground(new java.awt.Color(107, 112, 92));
         frequencyTypeIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         frequencyTypeIn.setForeground(new java.awt.Color(255, 232, 214));
         frequencyTypeIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A Day", "A Week", "A Month", "" }));
         frequencyTypeIn.setToolTipText("");
+        frequencyTypeIn.setPreferredSize(new java.awt.Dimension(195, 45));
 
         frequencyNextButton.setBackground(new java.awt.Color(107, 112, 92));
         frequencyNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         frequencyNextButton.setForeground(new java.awt.Color(255, 232, 214));
-        frequencyNextButton.setText("NEXT");
+        frequencyNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         frequencyNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        frequencyNextButton.setBorderPainted(false);
+        frequencyNextButton.setContentAreaFilled(false);
         frequencyNextButton.setEnabled(false);
+        frequencyNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        frequencyNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         frequencyNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 frequencyNextButtonActionPerformed(evt);
@@ -1917,14 +1988,22 @@ public class myMedsPage extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(107, 112, 92));
         jLabel1.setText("X");
 
-        frequencyBackButton.setText("BACK");
+        frequencyBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        frequencyBackButton.setBorderPainted(false);
+        frequencyBackButton.setContentAreaFilled(false);
+        frequencyBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        frequencyBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         frequencyBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 frequencyBackButtonActionPerformed(evt);
             }
         });
 
-        frequencyCancelButton.setText("CANCEL");
+        frequencyCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        frequencyCancelButton.setBorderPainted(false);
+        frequencyCancelButton.setContentAreaFilled(false);
+        frequencyCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        frequencyCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         frequencyCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 frequencyCancelButtonActionPerformed(evt);
@@ -1936,46 +2015,42 @@ public class myMedsPage extends javax.swing.JFrame {
         frequencyPanelLayout.setHorizontalGroup(
             frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frequencyPanelLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
                 .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(frequencyInstruct)
+                        .addGroup(frequencyPanelLayout.createSequentialGroup()
+                            .addComponent(frequencyNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(frequencyTypeIn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(frequencyPanelLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(frequencyInstruct))
+                        .addComponent(frequencyBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(frequencyNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(frequencyPanelLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(frequencyPanelLayout.createSequentialGroup()
-                                    .addComponent(frequencyBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(frequencyNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(frequencyPanelLayout.createSequentialGroup()
-                                    .addGap(61, 61, 61)
-                                    .addComponent(frequencyCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(frequencyPanelLayout.createSequentialGroup()
-                                .addComponent(frequencyNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(frequencyTypeIn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(frequencyCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         frequencyPanelLayout.setVerticalGroup(
             frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frequencyPanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
                 .addComponent(frequencyInstruct)
-                .addGap(104, 104, 104)
+                .addGap(50, 50, 50)
                 .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frequencyNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frequencyNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(frequencyTypeIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(116, 116, 116)
-                .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frequencyBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(frequencyNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(frequencyCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addGroup(frequencyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(frequencyNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frequencyBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(frequencyCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         medsPanel.add(frequencyPanel, "card2");
@@ -1989,31 +2064,45 @@ public class myMedsPage extends javax.swing.JFrame {
         dosesInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         dosesInstruct.setForeground(new java.awt.Color(0, 0, 0));
         dosesInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dosesInstruct.setText("How many doses do you have?");
+        dosesInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Doses Panel.png"))); // NOI18N
 
         dosesProvIn.setBackground(new java.awt.Color(107, 112, 92));
         dosesProvIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        dosesProvIn.setForeground(new java.awt.Color(255, 232, 214));
+        dosesProvIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         dosesProvNextButton.setBackground(new java.awt.Color(107, 112, 92));
         dosesProvNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         dosesProvNextButton.setForeground(new java.awt.Color(221, 190, 169));
-        dosesProvNextButton.setText("NEXT");
+        dosesProvNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         dosesProvNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        dosesProvNextButton.setBorderPainted(false);
+        dosesProvNextButton.setContentAreaFilled(false);
         dosesProvNextButton.setEnabled(false);
+        dosesProvNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        dosesProvNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         dosesProvNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosesProvNextButtonActionPerformed(evt);
             }
         });
 
-        dosesProvBackButton.setText("BACK");
+        dosesProvBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        dosesProvBackButton.setBorderPainted(false);
+        dosesProvBackButton.setContentAreaFilled(false);
+        dosesProvBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        dosesProvBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         dosesProvBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosesProvBackButtonActionPerformed(evt);
             }
         });
 
-        dosesProvCancelButton.setText("CANCEL");
+        dosesProvCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        dosesProvCancelButton.setBorderPainted(false);
+        dosesProvCancelButton.setContentAreaFilled(false);
+        dosesProvCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        dosesProvCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         dosesProvCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dosesProvCancelButtonActionPerformed(evt);
@@ -2025,33 +2114,34 @@ public class myMedsPage extends javax.swing.JFrame {
         dosesPanelLayout.setHorizontalGroup(
             dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dosesPanelLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(80, 80, 80)
+                .addGroup(dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dosesInstruct)
                     .addGroup(dosesPanelLayout.createSequentialGroup()
-                        .addComponent(dosesProvBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(dosesProvNextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(dosesInstruct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dosesProvIn)
-                    .addGroup(dosesPanelLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(dosesProvCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(dosesProvCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dosesPanelLayout.createSequentialGroup()
+                            .addComponent(dosesProvBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dosesProvNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dosesProvIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         dosesPanelLayout.setVerticalGroup(
             dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dosesPanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
                 .addComponent(dosesInstruct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dosesProvIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
-                .addGroup(dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dosesProvBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dosesProvNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(dosesProvCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(299, 299, 299))
+                .addGap(50, 50, 50)
+                .addComponent(dosesProvIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(dosesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dosesProvNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dosesProvBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(dosesProvCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         medsPanel.add(dosesPanel, "card2");
@@ -2065,22 +2155,28 @@ public class myMedsPage extends javax.swing.JFrame {
         refillInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         refillInstruct.setForeground(new java.awt.Color(0, 0, 0));
         refillInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        refillInstruct.setText("Do you have refills available?");
+        refillInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Refills Panel.png"))); // NOI18N
 
         howMany.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         howMany.setForeground(new java.awt.Color(0, 0, 0));
         howMany.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        howMany.setText("How Many?");
+        howMany.setIcon(new javax.swing.ImageIcon(getClass().getResource("/How Many.png"))); // NOI18N
 
         refillNumberIn.setBackground(new java.awt.Color(107, 112, 92));
         refillNumberIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        refillNumberIn.setForeground(new java.awt.Color(255, 232, 214));
+        refillNumberIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         refillNextButton.setBackground(new java.awt.Color(107, 112, 92));
         refillNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         refillNextButton.setForeground(new java.awt.Color(221, 190, 169));
-        refillNextButton.setText("NEXT");
+        refillNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         refillNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        refillNextButton.setBorderPainted(false);
+        refillNextButton.setContentAreaFilled(false);
         refillNextButton.setEnabled(false);
+        refillNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        refillNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         refillNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refillNextButtonActionPerformed(evt);
@@ -2088,21 +2184,33 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         refillsYesNo.add(yesButton);
-        yesButton.setText("YES");
+        yesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button.png"))); // NOI18N
+        yesButton.setBorderPainted(false);
+        yesButton.setContentAreaFilled(false);
+        yesButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        yesButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button Clicked.png"))); // NOI18N
         yesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonActionPerformed(evt);
             }
         });
 
-        refillsBackButton.setText("BACK");
+        refillsBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        refillsBackButton.setBorderPainted(false);
+        refillsBackButton.setContentAreaFilled(false);
+        refillsBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        refillsBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         refillsBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refillsBackButtonActionPerformed(evt);
             }
         });
 
-        refillsCancelButton.setText("CANCEL");
+        refillsCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        refillsCancelButton.setBorderPainted(false);
+        refillsCancelButton.setContentAreaFilled(false);
+        refillsCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        refillsCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         refillsCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refillsCancelButtonActionPerformed(evt);
@@ -2110,7 +2218,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         refillsYesNo.add(noButton);
-        noButton.setText("NO");
+        noButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button.png"))); // NOI18N
+        noButton.setBorderPainted(false);
+        noButton.setContentAreaFilled(false);
+        noButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        noButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button Clicked.png"))); // NOI18N
         noButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonActionPerformed(evt);
@@ -2122,48 +2234,44 @@ public class myMedsPage extends javax.swing.JFrame {
         refillsPanelLayout.setHorizontalGroup(
             refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(refillsPanelLayout.createSequentialGroup()
-                .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(refillsPanelLayout.createSequentialGroup()
-                            .addGap(96, 96, 96)
-                            .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(refillInstruct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refillNumberIn)
-                                .addGroup(refillsPanelLayout.createSequentialGroup()
-                                    .addComponent(yesButton)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(noButton))
-                                .addComponent(howMany, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(refillsPanelLayout.createSequentialGroup()
-                            .addGap(95, 95, 95)
-                            .addComponent(refillsBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(refillNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80)
+                .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(refillsPanelLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(refillsCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(refillsBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(refillNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(refillInstruct, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, refillsPanelLayout.createSequentialGroup()
+                        .addComponent(yesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(noButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(howMany, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(refillNumberIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(refillsPanelLayout.createSequentialGroup()
+                        .addComponent(refillsCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
+                .addGap(80, 80, 80))
         );
         refillsPanelLayout.setVerticalGroup(
             refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, refillsPanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(refillInstruct)
-                .addGap(59, 59, 59)
-                .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yesButton)
-                    .addComponent(noButton))
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
+                .addComponent(refillInstruct, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
                 .addComponent(howMany)
+                .addGap(0, 0, 0)
+                .addComponent(refillNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(refillsBackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refillNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(refillNumberIn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(refillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refillNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refillsBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(refillsCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addComponent(refillsCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         howMany.setVisible(false);
@@ -2176,83 +2284,150 @@ public class myMedsPage extends javax.swing.JFrame {
         reminderPanel.setForeground(new java.awt.Color(255, 232, 214));
         reminderPanel.setOpaque(false);
         reminderPanel.setPreferredSize(new java.awt.Dimension(510, 600));
-        reminderPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reminderInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         reminderInstruct.setForeground(new java.awt.Color(0, 0, 0));
         reminderInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reminderInstruct.setText("Do you want to set reminders?");
-        reminderPanel.add(reminderInstruct, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 124, -1, -1));
+        reminderInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Reminder Panel.png"))); // NOI18N
 
         remindNextButton.setBackground(new java.awt.Color(107, 112, 92));
         remindNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         remindNextButton.setForeground(new java.awt.Color(221, 190, 169));
-        remindNextButton.setText("NEXT");
+        remindNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         remindNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        remindNextButton.setBorderPainted(false);
+        remindNextButton.setContentAreaFilled(false);
         remindNextButton.setEnabled(false);
+        remindNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        remindNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         remindNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 remindNextButtonActionPerformed(evt);
             }
         });
-        reminderPanel.add(remindNextButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 453, 121, 45));
 
         yesButtonR.setBackground(new java.awt.Color(107, 112, 92));
         yesButtonR.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         yesButtonR.setForeground(new java.awt.Color(255, 232, 214));
-        yesButtonR.setText("YES");
+        yesButtonR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button.png"))); // NOI18N
+        yesButtonR.setBorderPainted(false);
+        yesButtonR.setContentAreaFilled(false);
         yesButtonR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        yesButtonR.setMaximumSize(new java.awt.Dimension(145, 45));
+        yesButtonR.setPreferredSize(new java.awt.Dimension(145, 45));
+        yesButtonR.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button Clicked.png"))); // NOI18N
         yesButtonR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonRActionPerformed(evt);
             }
         });
-        reminderPanel.add(yesButtonR, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 165, 82, -1));
 
         noButtonR.setBackground(new java.awt.Color(107, 112, 92));
         noButtonR.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         noButtonR.setForeground(new java.awt.Color(255, 232, 214));
-        noButtonR.setText("NO");
+        noButtonR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button.png"))); // NOI18N
+        noButtonR.setBorderPainted(false);
+        noButtonR.setContentAreaFilled(false);
         noButtonR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        noButtonR.setPreferredSize(new java.awt.Dimension(145, 45));
+        noButtonR.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button Clicked.png"))); // NOI18N
+        noButtonR.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button Clicked.png"))); // NOI18N
         noButtonR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonRActionPerformed(evt);
             }
         });
-        reminderPanel.add(noButtonR, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 165, -1, -1));
 
         hourIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         hourIn.setModel(new javax.swing.SpinnerListModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
         hourIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        reminderPanel.add(hourIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 272, 82, 77));
-        hourIn.setVisible(false);
 
         minuteIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         minuteIn.setModel(new javax.swing.SpinnerListModel(new String[] {"00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"}));
         minuteIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        reminderPanel.add(minuteIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 272, 82, 77));
-        minuteIn.setVisible(false);
 
         ampmIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         ampmIn.setModel(new javax.swing.SpinnerListModel(new String[] {"A.M.", "P.M."}));
-        reminderPanel.add(ampmIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 272, -1, 77));
-        ampmIn.setVisible(false);
 
-        reminderBackButton.setText("BACK");
+        reminderBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        reminderBackButton.setBorderPainted(false);
+        reminderBackButton.setContentAreaFilled(false);
+        reminderBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        reminderBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         reminderBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reminderBackButtonActionPerformed(evt);
             }
         });
-        reminderPanel.add(reminderBackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 453, 138, 45));
 
-        reminderCancelButton.setText("CANCEL");
+        reminderCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        reminderCancelButton.setBorderPainted(false);
+        reminderCancelButton.setContentAreaFilled(false);
+        reminderCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        reminderCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         reminderCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reminderCancelButtonActionPerformed(evt);
             }
         });
-        reminderPanel.add(reminderCancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 516, 189, 42));
+
+        javax.swing.GroupLayout reminderPanelLayout = new javax.swing.GroupLayout(reminderPanel);
+        reminderPanel.setLayout(reminderPanelLayout);
+        reminderPanelLayout.setHorizontalGroup(
+            reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reminderPanelLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reminderInstruct)
+                    .addGroup(reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(reminderPanelLayout.createSequentialGroup()
+                            .addComponent(yesButtonR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(noButtonR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(reminderPanelLayout.createSequentialGroup()
+                            .addComponent(hourIn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(54, 54, 54)
+                            .addComponent(minuteIn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ampmIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(reminderPanelLayout.createSequentialGroup()
+                            .addGroup(reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(reminderPanelLayout.createSequentialGroup()
+                                    .addGap(50, 50, 50)
+                                    .addComponent(reminderCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(reminderPanelLayout.createSequentialGroup()
+                                    .addComponent(reminderBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(60, 60, 60)
+                                    .addComponent(remindNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(80, 80, 80))
+        );
+        reminderPanelLayout.setVerticalGroup(
+            reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reminderPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(reminderInstruct, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yesButtonR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noButtonR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hourIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minuteIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ampmIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(reminderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reminderBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remindNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(reminderCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+        );
+
+        hourIn.setVisible(false);
+        minuteIn.setVisible(false);
+        ampmIn.setVisible(false);
 
         medsPanel.add(reminderPanel, "card2");
         refillsPanel.setVisible(false);
@@ -2265,14 +2440,18 @@ public class myMedsPage extends javax.swing.JFrame {
         requireAgainInstruct.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         requireAgainInstruct.setForeground(new java.awt.Color(0, 0, 0));
         requireAgainInstruct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        requireAgainInstruct.setText("Will you require this again?");
+        requireAgainInstruct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Require Again panel.png"))); // NOI18N
 
         requireAgainNextButton.setBackground(new java.awt.Color(107, 112, 92));
         requireAgainNextButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         requireAgainNextButton.setForeground(new java.awt.Color(221, 190, 169));
-        requireAgainNextButton.setText("NEXT");
+        requireAgainNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
         requireAgainNextButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        requireAgainNextButton.setBorderPainted(false);
+        requireAgainNextButton.setContentAreaFilled(false);
         requireAgainNextButton.setEnabled(false);
+        requireAgainNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        requireAgainNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         requireAgainNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requireAgainNextButtonActionPerformed(evt);
@@ -2280,16 +2459,24 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         callMessage.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
-        callMessage.setText("You'll Be Reminded to Call Your Doctor");
+        callMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Doctor Remind Call.png"))); // NOI18N
 
-        requireAgainBackButton.setText("BACK");
+        requireAgainBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        requireAgainBackButton.setBorderPainted(false);
+        requireAgainBackButton.setContentAreaFilled(false);
+        requireAgainBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        requireAgainBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         requireAgainBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requireAgainBackButtonActionPerformed(evt);
             }
         });
 
-        requireAgainCancelButton.setText("CANCEL");
+        requireAgainCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        requireAgainCancelButton.setBorderPainted(false);
+        requireAgainCancelButton.setContentAreaFilled(false);
+        requireAgainCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        requireAgainCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         requireAgainCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requireAgainCancelButtonActionPerformed(evt);
@@ -2297,7 +2484,12 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         requireAgainYesNo.add(yesButtonA);
-        yesButtonA.setText("YES");
+        yesButtonA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button.png"))); // NOI18N
+        yesButtonA.setBorderPainted(false);
+        yesButtonA.setContentAreaFilled(false);
+        yesButtonA.setPreferredSize(new java.awt.Dimension(145, 45));
+        yesButtonA.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button Clicked.png"))); // NOI18N
+        yesButtonA.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Yes Button Clicked.png"))); // NOI18N
         yesButtonA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonAActionPerformed(evt);
@@ -2305,7 +2497,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         requireAgainYesNo.add(noButtonA);
-        noButtonA.setText("NO");
+        noButtonA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button.png"))); // NOI18N
+        noButtonA.setBorderPainted(false);
+        noButtonA.setContentAreaFilled(false);
+        noButtonA.setPreferredSize(new java.awt.Dimension(145, 45));
+        noButtonA.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button Clicked.png"))); // NOI18N
         noButtonA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonAActionPerformed(evt);
@@ -2317,47 +2513,45 @@ public class myMedsPage extends javax.swing.JFrame {
         requireAgainPanelLayout.setHorizontalGroup(
             requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(requireAgainPanelLayout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
                 .addGroup(requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, requireAgainPanelLayout.createSequentialGroup()
-                        .addGroup(requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, requireAgainPanelLayout.createSequentialGroup()
-                                .addComponent(requireAgainBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(requireAgainNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(callMessage))
-                        .addGap(95, 95, 95))
+                        .addComponent(yesButtonA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(noButtonA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, requireAgainPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(requireAgainPanelLayout.createSequentialGroup()
-                                .addComponent(yesButtonA, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(noButtonA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(requireAgainInstruct))
-                        .addGap(111, 111, 111))))
+                            .addComponent(callMessage, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(requireAgainInstruct, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, requireAgainPanelLayout.createSequentialGroup()
+                                .addComponent(requireAgainBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(requireAgainNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(80, 80, 80))
             .addGroup(requireAgainPanelLayout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(requireAgainCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(130, 130, 130)
+                .addComponent(requireAgainCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         requireAgainPanelLayout.setVerticalGroup(
             requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, requireAgainPanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(50, 50, 50)
                 .addComponent(requireAgainInstruct)
-                .addGap(52, 52, 52)
+                .addGap(0, 0, 0)
                 .addGroup(requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yesButtonA)
-                    .addComponent(noButtonA))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(callMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addGroup(requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(requireAgainNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(requireAgainBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(requireAgainCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                    .addComponent(yesButtonA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noButtonA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(callMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(requireAgainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(requireAgainNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(requireAgainBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(requireAgainCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         callMessage.setVisible(false);
@@ -2373,22 +2567,34 @@ public class myMedsPage extends javax.swing.JFrame {
         confirmButton.setBackground(new java.awt.Color(107, 112, 92));
         confirmButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         confirmButton.setForeground(new java.awt.Color(221, 190, 169));
-        confirmButton.setText("CONFIRM");
+        confirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button.png"))); // NOI18N
         confirmButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        confirmButton.setBorderPainted(false);
+        confirmButton.setContentAreaFilled(false);
+        confirmButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        confirmButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button Clicked.png"))); // NOI18N
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmButtonActionPerformed(evt);
             }
         });
 
-        confirmCancelButton.setText("CANCEL");
+        confirmCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        confirmCancelButton.setBorderPainted(false);
+        confirmCancelButton.setContentAreaFilled(false);
+        confirmCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        confirmCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         confirmCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmCancelButtonActionPerformed(evt);
             }
         });
 
-        confirmBackButton.setText("BACK");
+        confirmBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        confirmBackButton.setBorderPainted(false);
+        confirmBackButton.setContentAreaFilled(false);
+        confirmBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        confirmBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         confirmBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBackButtonActionPerformed(evt);
@@ -2429,7 +2635,7 @@ public class myMedsPage extends javax.swing.JFrame {
                             .addGroup(confirmationPanelLayout.createSequentialGroup()
                                 .addComponent(confirmBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(confirmationPanelLayout.createSequentialGroup()
                         .addGap(160, 160, 160)
@@ -2444,7 +2650,7 @@ public class myMedsPage extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(confirmationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(confirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(54, Short.MAX_VALUE))
@@ -2458,7 +2664,11 @@ public class myMedsPage extends javax.swing.JFrame {
         medInfoPanel.setOpaque(false);
         medInfoPanel.setPreferredSize(new java.awt.Dimension(510, 600));
 
-        medInfoBackButton.setText("BACK");
+        medInfoBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        medInfoBackButton.setBorderPainted(false);
+        medInfoBackButton.setContentAreaFilled(false);
+        medInfoBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        medInfoBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         medInfoBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medInfoBackButtonActionPerformed(evt);
@@ -2469,7 +2679,8 @@ public class myMedsPage extends javax.swing.JFrame {
         jScrollPane4.setMinimumSize(new java.awt.Dimension(300, 350));
 
         medInfoList.setBackground(new java.awt.Color(107, 112, 92));
-        medInfoList.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
+        medInfoList.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        medInfoList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         medInfoList.setForeground(new java.awt.Color(255, 232, 214));
         medInfoList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -2477,7 +2688,7 @@ public class myMedsPage extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         medInfoList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        medInfoList.setPreferredSize(new java.awt.Dimension(275, 300));
+        medInfoList.setPreferredSize(new java.awt.Dimension(350, 300));
         medInfoList.setSelectionBackground(new java.awt.Color(221, 190, 169));
         medInfoList.setSelectionForeground(new java.awt.Color(107, 112, 92));
         medInfoList.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2487,7 +2698,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(medInfoList);
 
-        medInfoEditButton.setText("EDIT");
+        medInfoEditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button.png"))); // NOI18N
+        medInfoEditButton.setBorderPainted(false);
+        medInfoEditButton.setContentAreaFilled(false);
+        medInfoEditButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        medInfoEditButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button Clicked.png"))); // NOI18N
         medInfoEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 medInfoEditButtonActionPerformed(evt);
@@ -2499,25 +2714,25 @@ public class myMedsPage extends javax.swing.JFrame {
         medInfoPanelLayout.setHorizontalGroup(
             medInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(medInfoPanelLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(80, 80, 80)
                 .addGroup(medInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(medInfoPanelLayout.createSequentialGroup()
-                        .addComponent(medInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(medInfoEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addComponent(medInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(medInfoEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
         );
         medInfoPanelLayout.setVerticalGroup(
             medInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, medInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(50, 50, 50)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(25, 25, 25)
                 .addGroup(medInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(medInfoBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addComponent(medInfoEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                    .addComponent(medInfoBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(medInfoEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         medsPanel.add(medInfoPanel, "card2");
@@ -2531,25 +2746,42 @@ public class myMedsPage extends javax.swing.JFrame {
         editPanelConfirmButton.setBackground(new java.awt.Color(107, 112, 92));
         editPanelConfirmButton.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         editPanelConfirmButton.setForeground(new java.awt.Color(221, 190, 169));
-        editPanelConfirmButton.setText("CONFIRM");
+        editPanelConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button.png"))); // NOI18N
         editPanelConfirmButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        editPanelConfirmButton.setBorderPainted(false);
+        editPanelConfirmButton.setContentAreaFilled(false);
+        editPanelConfirmButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        editPanelConfirmButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button Clicked.png"))); // NOI18N
         editPanelConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editPanelConfirmButtonActionPerformed(evt);
             }
         });
 
-        editPanelBackButton.setText("BACK");
+        editPanelBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        editPanelBackButton.setBorderPainted(false);
+        editPanelBackButton.setContentAreaFilled(false);
+        editPanelBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        editPanelBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         editPanelBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editPanelBackButtonActionPerformed(evt);
             }
         });
 
+        medNameEdit.setBackground(new java.awt.Color(107, 112, 92));
+        medNameEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        medNameEdit.setForeground(new java.awt.Color(255, 232, 214));
         medNameEdit.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        rxNumberEdit.setBackground(new java.awt.Color(107, 112, 92));
+        rxNumberEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        rxNumberEdit.setForeground(new java.awt.Color(255, 232, 214));
         rxNumberEdit.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        dosageNumberEdit.setBackground(new java.awt.Color(107, 112, 92));
+        dosageNumberEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        dosageNumberEdit.setForeground(new java.awt.Color(255, 232, 214));
         dosageNumberEdit.setPreferredSize(new java.awt.Dimension(150, 25));
 
         dosageTypeEdit.setBackground(new java.awt.Color(107, 112, 92));
@@ -2558,6 +2790,9 @@ public class myMedsPage extends javax.swing.JFrame {
         dosageTypeEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MG", "Tablet(s)", "Capsule(s)", "ML", "Injection(s)", "Puff(s)", "Application(s)", "Drop(s)" }));
         dosageTypeEdit.setToolTipText("Select the type of dosage");
 
+        frequencyNumberEdit.setBackground(new java.awt.Color(107, 112, 92));
+        frequencyNumberEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        frequencyNumberEdit.setForeground(new java.awt.Color(255, 232, 214));
         frequencyNumberEdit.setPreferredSize(new java.awt.Dimension(150, 25));
 
         frequencyTypeEdit.setBackground(new java.awt.Color(107, 112, 92));
@@ -2566,47 +2801,53 @@ public class myMedsPage extends javax.swing.JFrame {
         frequencyTypeEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A Day", "A Week", "A Month", "" }));
         frequencyTypeEdit.setToolTipText("");
 
+        dosesProvEdit.setBackground(new java.awt.Color(107, 112, 92));
+        dosesProvEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        dosesProvEdit.setForeground(new java.awt.Color(255, 232, 214));
         dosesProvEdit.setPreferredSize(new java.awt.Dimension(150, 25));
 
+        refillNumberEdit.setBackground(new java.awt.Color(107, 112, 92));
+        refillNumberEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 14)); // NOI18N
+        refillNumberEdit.setForeground(new java.awt.Color(255, 232, 214));
         refillNumberEdit.setPreferredSize(new java.awt.Dimension(150, 25));
 
         jLabel2.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(107, 112, 92));
         jLabel2.setText("X");
 
-        jLabel3.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Medication Name");
 
-        jLabel4.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Prescription Number");
 
-        jLabel5.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Dosage");
 
-        jLabel6.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Frequency");
 
-        jLabel7.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Doses Provided");
 
-        jLabel8.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Refills Available?");
 
-        howManyLabel.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        howManyLabel.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         howManyLabel.setForeground(new java.awt.Color(0, 0, 0));
         howManyLabel.setText("How Many?");
 
-        jLabel10.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Reminders?");
 
-        jLabel11.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Require Again?");
 
@@ -2622,7 +2863,12 @@ public class myMedsPage extends javax.swing.JFrame {
         ampmInEdit.setModel(new javax.swing.SpinnerListModel(new String[] {"A.M.", "P.M."}));
 
         remindersYesNoEdit.add(yesButtonRemindEdit);
-        yesButtonRemindEdit.setText("YES");
+        yesButtonRemindEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Small Yes Button.png"))); // NOI18N
+        yesButtonRemindEdit.setBorderPainted(false);
+        yesButtonRemindEdit.setContentAreaFilled(false);
+        yesButtonRemindEdit.setMaximumSize(new java.awt.Dimension(100, 100));
+        yesButtonRemindEdit.setPreferredSize(new java.awt.Dimension(100, 25));
+        yesButtonRemindEdit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Small Yes Button Clicked.png"))); // NOI18N
         yesButtonRemindEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonRemindEditActionPerformed(evt);
@@ -2630,7 +2876,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         remindersYesNoEdit.add(noButtonRemindEdit);
-        noButtonRemindEdit.setText("NO");
+        noButtonRemindEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Small No Button.png"))); // NOI18N
+        noButtonRemindEdit.setBorderPainted(false);
+        noButtonRemindEdit.setContentAreaFilled(false);
+        noButtonRemindEdit.setPreferredSize(new java.awt.Dimension(100, 25));
+        noButtonRemindEdit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Small No Button Clicked.png"))); // NOI18N
         noButtonRemindEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonRemindEditActionPerformed(evt);
@@ -2638,7 +2888,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         refillsYesNoEdit.add(yesButtonRefillsEdit);
-        yesButtonRefillsEdit.setText("YES");
+        yesButtonRefillsEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Small Yes Button.png"))); // NOI18N
+        yesButtonRefillsEdit.setBorderPainted(false);
+        yesButtonRefillsEdit.setContentAreaFilled(false);
+        yesButtonRefillsEdit.setPreferredSize(new java.awt.Dimension(100, 25));
+        yesButtonRefillsEdit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Small Yes Button Clicked.png"))); // NOI18N
         yesButtonRefillsEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonRefillsEditActionPerformed(evt);
@@ -2646,7 +2900,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         refillsYesNoEdit.add(noButtonRefillsEdit);
-        noButtonRefillsEdit.setText("NO");
+        noButtonRefillsEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Small No Button.png"))); // NOI18N
+        noButtonRefillsEdit.setBorderPainted(false);
+        noButtonRefillsEdit.setContentAreaFilled(false);
+        noButtonRefillsEdit.setPreferredSize(new java.awt.Dimension(100, 25));
+        noButtonRefillsEdit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Small No Button Clicked.png"))); // NOI18N
         noButtonRefillsEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonRefillsEditActionPerformed(evt);
@@ -2654,7 +2912,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         requireAgainYesNoEdit.add(yesButtonAgainEdit);
-        yesButtonAgainEdit.setText("YES");
+        yesButtonAgainEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Small Yes Button.png"))); // NOI18N
+        yesButtonAgainEdit.setBorderPainted(false);
+        yesButtonAgainEdit.setContentAreaFilled(false);
+        yesButtonAgainEdit.setPreferredSize(new java.awt.Dimension(100, 25));
+        yesButtonAgainEdit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Small Yes Button Clicked.png"))); // NOI18N
         yesButtonAgainEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yesButtonAgainEditActionPerformed(evt);
@@ -2662,7 +2924,11 @@ public class myMedsPage extends javax.swing.JFrame {
         });
 
         requireAgainYesNoEdit.add(noButtonAgainEdit);
-        noButtonAgainEdit.setText("NO");
+        noButtonAgainEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Small No Button.png"))); // NOI18N
+        noButtonAgainEdit.setBorderPainted(false);
+        noButtonAgainEdit.setContentAreaFilled(false);
+        noButtonAgainEdit.setPreferredSize(new java.awt.Dimension(100, 25));
+        noButtonAgainEdit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Small No Button Clicked.png"))); // NOI18N
         noButtonAgainEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noButtonAgainEditActionPerformed(evt);
@@ -2672,7 +2938,13 @@ public class myMedsPage extends javax.swing.JFrame {
         reminderLabelEdit.setBackground(new java.awt.Color(0, 0, 0));
         reminderLabelEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 16)); // NOI18N
         reminderLabelEdit.setForeground(new java.awt.Color(0, 0, 0));
-        reminderLabelEdit.setText("You Will Be Reminded To Call Your Doctor");
+        reminderLabelEdit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reminderLabelEdit.setText("You Will Be Reminded");
+
+        jLabel18.setFont(new java.awt.Font("Mongolian Baiti", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("To Call Your Doctor");
 
         javax.swing.GroupLayout editMedPanelLayout = new javax.swing.GroupLayout(editMedPanel);
         editMedPanel.setLayout(editMedPanelLayout);
@@ -2691,12 +2963,14 @@ public class myMedsPage extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(editMedPanelLayout.createSequentialGroup()
-                        .addComponent(editPanelBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reminderLabelEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMedPanelLayout.createSequentialGroup()
+                        .addComponent(editPanelBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editPanelConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editMedPanelLayout.createSequentialGroup()
+                        .addComponent(editPanelConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(editMedPanelLayout.createSequentialGroup()
                         .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(frequencyNumberEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dosageNumberEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2708,38 +2982,34 @@ public class myMedsPage extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMedPanelLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(frequencyTypeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(rxNumberEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(medNameEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(refillNumberEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dosesProvEdit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(editMedPanelLayout.createSequentialGroup()
-                        .addComponent(yesButtonRefillsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rxNumberEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(medNameEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(refillNumberEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dosesProvEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMedPanelLayout.createSequentialGroup()
+                        .addComponent(yesButtonRefillsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(noButtonRefillsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editMedPanelLayout.createSequentialGroup()
+                        .addComponent(noButtonRefillsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(editMedPanelLayout.createSequentialGroup()
                         .addComponent(hourInEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(minuteInEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ampmInEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, editMedPanelLayout.createSequentialGroup()
+                    .addGroup(editMedPanelLayout.createSequentialGroup()
                         .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(yesButtonAgainEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(yesButtonRemindEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                            .addComponent(yesButtonAgainEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yesButtonRemindEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(noButtonRemindEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(noButtonAgainEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(75, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMedPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(reminderLabelEdit)
-                .addGap(65, 65, 65))
+                            .addComponent(noButtonRemindEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(noButtonAgainEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editMedPanelLayout.setVerticalGroup(
             editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMedPanelLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(15, 15, 15)
                 .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medNameEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -2763,10 +3033,11 @@ public class myMedsPage extends javax.swing.JFrame {
                     .addComponent(dosesProvEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(yesButtonRefillsEdit)
-                    .addComponent(noButtonRefillsEdit))
+                .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yesButtonRefillsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(noButtonRefillsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refillNumberEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2778,8 +3049,8 @@ public class myMedsPage extends javax.swing.JFrame {
                         .addGap(8, 8, 8))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editMedPanelLayout.createSequentialGroup()
                         .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(yesButtonRemindEdit)
-                            .addComponent(noButtonRemindEdit))
+                            .addComponent(yesButtonRemindEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(noButtonRemindEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
                 .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(hourInEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2788,17 +3059,18 @@ public class myMedsPage extends javax.swing.JFrame {
                         .addComponent(minuteInEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(yesButtonAgainEdit))
-                    .addComponent(noButtonAgainEdit))
+                    .addComponent(yesButtonAgainEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(noButtonAgainEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(reminderLabelEdit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
                 .addGroup(editMedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editPanelBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editPanelConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                    .addComponent(editPanelBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editPanelConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
         );
 
         refillNumberEdit.setVisible(false);
@@ -2807,6 +3079,7 @@ public class myMedsPage extends javax.swing.JFrame {
         minuteIn.setVisible(false);
         ampmIn.setVisible(false);
         reminderLabelEdit.setVisible(false);
+        jLabel18.setVisible(false);
 
         medsPanel.add(editMedPanel, "card2");
         medInfoPanel.setVisible(false);
@@ -2818,13 +3091,17 @@ public class myMedsPage extends javax.swing.JFrame {
 
         contactListPanel.setBackground(new java.awt.Color(255, 232, 214));
 
-        contactList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        contactList.setBackground(new java.awt.Color(107, 112, 92));
+        contactList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        contactList.setForeground(new java.awt.Color(255, 232, 214));
         contactList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         contactList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        contactList.setSelectionBackground(new java.awt.Color(221, 190, 169));
+        contactList.setSelectionForeground(new java.awt.Color(107, 112, 92));
         contactList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 contactListMouseClicked(evt);
@@ -2832,13 +3109,20 @@ public class myMedsPage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(contactList);
 
-        doctorList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        doctorList.setBackground(new java.awt.Color(107, 112, 92));
+        doctorList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        doctorList.setForeground(new java.awt.Color(255, 232, 214));
         doctorList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         doctorList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        doctorList.setMaximumSize(new java.awt.Dimension(350, 200));
+        doctorList.setMinimumSize(new java.awt.Dimension(350, 200));
+        doctorList.setPreferredSize(new java.awt.Dimension(350, 200));
+        doctorList.setSelectionBackground(new java.awt.Color(221, 190, 169));
+        doctorList.setSelectionForeground(new java.awt.Color(107, 112, 92));
         doctorList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 doctorListMouseClicked(evt);
@@ -2849,8 +3133,12 @@ public class myMedsPage extends javax.swing.JFrame {
         deleteContactButton.setBackground(new java.awt.Color(255, 51, 51));
         deleteContactButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         deleteContactButton.setForeground(new java.awt.Color(0, 0, 0));
-        deleteContactButton.setText("Delete Contact");
+        deleteContactButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete Contact Button Clicked.png"))); // NOI18N
         deleteContactButton.setToolTipText("");
+        deleteContactButton.setBorderPainted(false);
+        deleteContactButton.setContentAreaFilled(false);
+        deleteContactButton.setPreferredSize(new java.awt.Dimension(150, 45));
+        deleteContactButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete Contact Button.png"))); // NOI18N
         deleteContactButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteContactButtonActionPerformed(evt);
@@ -2860,8 +3148,12 @@ public class myMedsPage extends javax.swing.JFrame {
         addContactButton.setBackground(new java.awt.Color(51, 204, 0));
         addContactButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         addContactButton.setForeground(new java.awt.Color(0, 0, 0));
-        addContactButton.setText("Add New Contact");
+        addContactButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add Contact Button Clicked.png"))); // NOI18N
         addContactButton.setToolTipText("");
+        addContactButton.setBorderPainted(false);
+        addContactButton.setContentAreaFilled(false);
+        addContactButton.setPreferredSize(new java.awt.Dimension(150, 45));
+        addContactButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Add Contact Button.png"))); // NOI18N
         addContactButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addContactButtonActionPerformed(evt);
@@ -2871,8 +3163,12 @@ public class myMedsPage extends javax.swing.JFrame {
         addDoctorButton.setBackground(new java.awt.Color(51, 204, 0));
         addDoctorButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         addDoctorButton.setForeground(new java.awt.Color(0, 0, 0));
-        addDoctorButton.setText("Add New Doctor");
+        addDoctorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add Doctor Button Clicked.png"))); // NOI18N
         addDoctorButton.setToolTipText("");
+        addDoctorButton.setBorderPainted(false);
+        addDoctorButton.setContentAreaFilled(false);
+        addDoctorButton.setPreferredSize(new java.awt.Dimension(150, 45));
+        addDoctorButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Add Doctor Button.png"))); // NOI18N
         addDoctorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDoctorButtonActionPerformed(evt);
@@ -2882,8 +3178,13 @@ public class myMedsPage extends javax.swing.JFrame {
         deleteDoctorButton.setBackground(new java.awt.Color(255, 51, 51));
         deleteDoctorButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         deleteDoctorButton.setForeground(new java.awt.Color(0, 0, 0));
-        deleteDoctorButton.setText("Delete Doctor");
+        deleteDoctorButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete Doctor Button Clicked.png"))); // NOI18N
         deleteDoctorButton.setToolTipText("");
+        deleteDoctorButton.setBorderPainted(false);
+        deleteDoctorButton.setContentAreaFilled(false);
+        deleteDoctorButton.setMaximumSize(new java.awt.Dimension(150, 45));
+        deleteDoctorButton.setPreferredSize(new java.awt.Dimension(150, 45));
+        deleteDoctorButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete Doctor Button.png"))); // NOI18N
         deleteDoctorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteDoctorButtonActionPerformed(evt);
@@ -2895,36 +3196,35 @@ public class myMedsPage extends javax.swing.JFrame {
         contactListPanelLayout.setHorizontalGroup(
             contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contactListPanelLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(contactListPanelLayout.createSequentialGroup()
-                            .addComponent(deleteDoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(addDoctorButton))
-                        .addComponent(jScrollPane5))
+                .addGap(80, 80, 80)
+                .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(contactListPanelLayout.createSequentialGroup()
-                        .addComponent(deleteContactButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(addContactButton)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(deleteDoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addDoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contactListPanelLayout.createSequentialGroup()
+                        .addComponent(deleteContactButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addContactButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1))
+                .addGap(80, 80, 80))
         );
         contactListPanelLayout.setVerticalGroup(
             contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contactListPanelLayout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteContactButton)
-                    .addComponent(addContactButton))
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteDoctorButton)
-                    .addComponent(addDoctorButton))
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteContactButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addContactButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contactListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteDoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addDoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -2937,15 +3237,22 @@ public class myMedsPage extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Contact Name:");
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add Contact Panel.png"))); // NOI18N
 
-        conNameIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        conNameIn.setBackground(new java.awt.Color(107, 112, 92));
+        conNameIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conNameIn.setForeground(new java.awt.Color(255, 232, 214));
         conNameIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        conNameIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         conNameNextButton.setBackground(new java.awt.Color(0, 204, 51));
         conNameNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conNameNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        conNameNextButton.setText("NEXT");
+        conNameNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        conNameNextButton.setBorderPainted(false);
+        conNameNextButton.setContentAreaFilled(false);
+        conNameNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conNameNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         conNameNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conNameNextButtonActionPerformed(evt);
@@ -2955,7 +3262,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conNameBackButton.setBackground(new java.awt.Color(153, 153, 153));
         conNameBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conNameBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        conNameBackButton.setText("BACK");
+        conNameBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        conNameBackButton.setBorderPainted(false);
+        conNameBackButton.setContentAreaFilled(false);
+        conNameBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conNameBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         conNameBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conNameBackButtonActionPerformed(evt);
@@ -2965,7 +3276,12 @@ public class myMedsPage extends javax.swing.JFrame {
         conNameCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         conNameCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conNameCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        conNameCancelButton.setText("CANCEL");
+        conNameCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        conNameCancelButton.setBorderPainted(false);
+        conNameCancelButton.setContentAreaFilled(false);
+        conNameCancelButton.setDefaultCapable(false);
+        conNameCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        conNameCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         conNameCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conNameCancelButtonActionPerformed(evt);
@@ -2977,33 +3293,34 @@ public class myMedsPage extends javax.swing.JFrame {
         addConNamePanelLayout.setHorizontalGroup(
             addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addConNamePanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(conNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(conNameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addConNamePanelLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addComponent(conNameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(conNameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                    .addGroup(addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(addConNamePanelLayout.createSequentialGroup()
+                            .addComponent(conNameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(conNameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(conNameIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addConNamePanelLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(conNameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         addConNamePanelLayout.setVerticalGroup(
             addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addConNamePanelLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel9)
-                .addGap(55, 55, 55)
-                .addComponent(conNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addGroup(addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conNameNextButton)
-                    .addComponent(conNameBackButton))
-                .addGap(34, 34, 34)
-                .addComponent(conNameCancelButton)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(conNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(addConNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conNameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conNameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(conNameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         addConPhonePanel.setBackground(new java.awt.Color(255, 232, 214));
@@ -3012,15 +3329,21 @@ public class myMedsPage extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Contact Phone Number");
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add ConPhone Panel.png"))); // NOI18N
 
+        conPhoneIn.setBackground(new java.awt.Color(107, 112, 92));
         conPhoneIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conPhoneIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        conPhoneIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         conPhoneBackButton.setBackground(new java.awt.Color(153, 153, 153));
         conPhoneBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conPhoneBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        conPhoneBackButton.setText("BACK");
+        conPhoneBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        conPhoneBackButton.setBorderPainted(false);
+        conPhoneBackButton.setContentAreaFilled(false);
+        conPhoneBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conPhoneBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         conPhoneBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conPhoneBackButtonActionPerformed(evt);
@@ -3030,7 +3353,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conPhoneNextButton.setBackground(new java.awt.Color(0, 204, 51));
         conPhoneNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conPhoneNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        conPhoneNextButton.setText("NEXT");
+        conPhoneNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        conPhoneNextButton.setBorderPainted(false);
+        conPhoneNextButton.setContentAreaFilled(false);
+        conPhoneNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conPhoneNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         conPhoneNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conPhoneNextButtonActionPerformed(evt);
@@ -3040,7 +3367,12 @@ public class myMedsPage extends javax.swing.JFrame {
         conPhoneCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         conPhoneCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conPhoneCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        conPhoneCancelButton.setText("CANCEL");
+        conPhoneCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        conPhoneCancelButton.setBorderPainted(false);
+        conPhoneCancelButton.setContentAreaFilled(false);
+        conPhoneCancelButton.setDefaultCapable(false);
+        conPhoneCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        conPhoneCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         conPhoneCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conPhoneCancelButtonActionPerformed(evt);
@@ -3052,37 +3384,34 @@ public class myMedsPage extends javax.swing.JFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(conPhoneIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(30, 30, 30)))
+                    .addComponent(jLabel12)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
+                            .addComponent(conPhoneBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(conPhoneNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(conPhoneIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(conPhoneBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(conPhoneNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(conPhoneCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(conPhoneCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel12)
-                .addGap(58, 58, 58)
-                .addComponent(conPhoneIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conPhoneNextButton)
-                    .addComponent(conPhoneBackButton))
-                .addGap(35, 35, 35)
-                .addComponent(conPhoneCancelButton)
-                .addGap(126, 126, 126))
+                .addGap(50, 50, 50)
+                .addComponent(conPhoneIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conPhoneNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conPhoneBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(conPhoneCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout addConPhonePanelLayout = new javax.swing.GroupLayout(addConPhonePanel);
@@ -3098,7 +3427,7 @@ public class myMedsPage extends javax.swing.JFrame {
         );
         addConPhonePanelLayout.setVerticalGroup(
             addConPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
             .addGroup(addConPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addConPhonePanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -3114,15 +3443,22 @@ public class myMedsPage extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Contact Email Address:");
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add ConEmail Panel.png"))); // NOI18N
 
-        conEmailIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        conEmailIn.setBackground(new java.awt.Color(107, 112, 92));
+        conEmailIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conEmailIn.setForeground(new java.awt.Color(255, 232, 214));
         conEmailIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        conEmailIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         conEmailBackButton.setBackground(new java.awt.Color(153, 153, 153));
         conEmailBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conEmailBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        conEmailBackButton.setText("BACK");
+        conEmailBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        conEmailBackButton.setBorderPainted(false);
+        conEmailBackButton.setContentAreaFilled(false);
+        conEmailBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conEmailBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         conEmailBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conEmailBackButtonActionPerformed(evt);
@@ -3132,7 +3468,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conEmailNextButton.setBackground(new java.awt.Color(0, 204, 51));
         conEmailNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conEmailNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        conEmailNextButton.setText("NEXT");
+        conEmailNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        conEmailNextButton.setBorderPainted(false);
+        conEmailNextButton.setContentAreaFilled(false);
+        conEmailNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conEmailNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         conEmailNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conEmailNextButtonActionPerformed(evt);
@@ -3142,7 +3482,12 @@ public class myMedsPage extends javax.swing.JFrame {
         conEmailCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         conEmailCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conEmailCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        conEmailCancelButton.setText("CANCEL");
+        conEmailCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        conEmailCancelButton.setBorderPainted(false);
+        conEmailCancelButton.setContentAreaFilled(false);
+        conEmailCancelButton.setDefaultCapable(false);
+        conEmailCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        conEmailCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         conEmailCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conEmailCancelButtonActionPerformed(evt);
@@ -3154,58 +3499,48 @@ public class myMedsPage extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(conEmailIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addGap(30, 30, 30)))
+                    .addComponent(jLabel13)
+                    .addComponent(conEmailIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(conEmailBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(conEmailNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(conEmailBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(conEmailNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(conEmailCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(conEmailCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel13)
-                .addGap(58, 58, 58)
-                .addComponent(conEmailIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(50, 50, 50)
+                .addComponent(conEmailIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conEmailNextButton)
-                    .addComponent(conEmailBackButton))
-                .addGap(35, 35, 35)
-                .addComponent(conEmailCancelButton)
-                .addGap(126, 126, 126))
+                    .addComponent(conEmailNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conEmailBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(conEmailCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout addConEmailPanelLayout = new javax.swing.GroupLayout(addConEmailPanel);
         addConEmailPanel.setLayout(addConEmailPanelLayout);
         addConEmailPanelLayout.setHorizontalGroup(
             addConEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-            .addGroup(addConEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(addConEmailPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addConEmailPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         addConEmailPanelLayout.setVerticalGroup(
             addConEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(addConEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(addConEmailPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(addConEmailPanelLayout.createSequentialGroup()
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         addNewContactPanel.setVisible(false);
@@ -3214,15 +3549,22 @@ public class myMedsPage extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Contact's Relationship To You:");
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add ConRelation Panel.png"))); // NOI18N
 
-        conRelationIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        conRelationIn.setBackground(new java.awt.Color(107, 112, 92));
+        conRelationIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conRelationIn.setForeground(new java.awt.Color(255, 232, 214));
         conRelationIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        conRelationIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         conRelationBackButton.setBackground(new java.awt.Color(153, 153, 153));
         conRelationBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conRelationBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        conRelationBackButton.setText("BACK");
+        conRelationBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        conRelationBackButton.setBorderPainted(false);
+        conRelationBackButton.setContentAreaFilled(false);
+        conRelationBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conRelationBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         conRelationBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conRelationBackButtonActionPerformed(evt);
@@ -3232,7 +3574,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conRelationNextButton.setBackground(new java.awt.Color(0, 204, 51));
         conRelationNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conRelationNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        conRelationNextButton.setText("NEXT");
+        conRelationNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        conRelationNextButton.setBorderPainted(false);
+        conRelationNextButton.setContentAreaFilled(false);
+        conRelationNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conRelationNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         conRelationNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conRelationNextButtonActionPerformed(evt);
@@ -3242,7 +3588,12 @@ public class myMedsPage extends javax.swing.JFrame {
         conRelationCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         conRelationCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conRelationCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        conRelationCancelButton.setText("CANCEL");
+        conRelationCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        conRelationCancelButton.setBorderPainted(false);
+        conRelationCancelButton.setContentAreaFilled(false);
+        conRelationCancelButton.setDefaultCapable(false);
+        conRelationCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        conRelationCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         conRelationCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conRelationCancelButtonActionPerformed(evt);
@@ -3254,50 +3605,60 @@ public class myMedsPage extends javax.swing.JFrame {
         addConRelationshipPanelLayout.setHorizontalGroup(
             addConRelationshipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addConRelationshipPanelLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(80, 80, 80)
                 .addGroup(addConRelationshipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(addConRelationshipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(addConRelationshipPanelLayout.createSequentialGroup()
-                            .addComponent(conRelationBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(conRelationNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(conRelationIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addConRelationshipPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(conRelationCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(138, 138, 138)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addGroup(addConRelationshipPanelLayout.createSequentialGroup()
+                        .addComponent(conRelationBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(conRelationNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addConRelationshipPanelLayout.createSequentialGroup()
+                        .addGroup(addConRelationshipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(conRelationIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(addConRelationshipPanelLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(conRelationCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         addConRelationshipPanelLayout.setVerticalGroup(
             addConRelationshipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addConRelationshipPanelLayout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel14)
-                .addGap(58, 58, 58)
-                .addComponent(conRelationIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(50, 50, 50)
+                .addComponent(conRelationIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addGroup(addConRelationshipPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conRelationNextButton)
-                    .addComponent(conRelationBackButton))
-                .addGap(46, 46, 46)
-                .addComponent(conRelationCancelButton)
-                .addGap(115, 115, 115))
+                    .addComponent(conRelationNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conRelationBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(conRelationCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
 
         addConConfirmPanel.setBackground(new java.awt.Color(255, 232, 214));
 
+        contactConfirmList.setBackground(new java.awt.Color(107, 112, 92));
+        contactConfirmList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        contactConfirmList.setForeground(new java.awt.Color(255, 232, 214));
         contactConfirmList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        contactConfirmList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        contactConfirmList.setPreferredSize(new java.awt.Dimension(470, 300));
         jScrollPane6.setViewportView(contactConfirmList);
 
         conConfirmBackButton.setBackground(new java.awt.Color(153, 153, 153));
         conConfirmBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conConfirmBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        conConfirmBackButton.setText("BACK");
+        conConfirmBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        conConfirmBackButton.setBorderPainted(false);
+        conConfirmBackButton.setContentAreaFilled(false);
+        conConfirmBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conConfirmBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         conConfirmBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conConfirmBackButtonActionPerformed(evt);
@@ -3307,7 +3668,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conConfirmConfirmButton.setBackground(new java.awt.Color(0, 204, 51));
         conConfirmConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conConfirmConfirmButton.setForeground(new java.awt.Color(0, 0, 0));
-        conConfirmConfirmButton.setText("CONFIRM");
+        conConfirmConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button.png"))); // NOI18N
+        conConfirmConfirmButton.setBorderPainted(false);
+        conConfirmConfirmButton.setContentAreaFilled(false);
+        conConfirmConfirmButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conConfirmConfirmButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button Clicked.png"))); // NOI18N
         conConfirmConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conConfirmConfirmButtonActionPerformed(evt);
@@ -3317,7 +3682,12 @@ public class myMedsPage extends javax.swing.JFrame {
         conConfirmCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         conConfirmCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conConfirmCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        conConfirmCancelButton.setText("CANCEL");
+        conConfirmCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        conConfirmCancelButton.setBorderPainted(false);
+        conConfirmCancelButton.setContentAreaFilled(false);
+        conConfirmCancelButton.setDefaultCapable(false);
+        conConfirmCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        conConfirmCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         conConfirmCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conConfirmCancelButtonActionPerformed(evt);
@@ -3329,39 +3699,35 @@ public class myMedsPage extends javax.swing.JFrame {
         addConConfirmPanelLayout.setHorizontalGroup(
             addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addConConfirmPanelLayout.createSequentialGroup()
-                .addGroup(addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(conConfirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(addConConfirmPanelLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(conConfirmBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(addConConfirmPanelLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(conConfirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addConConfirmPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(conConfirmConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(conConfirmBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(conConfirmConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         addConConfirmPanelLayout.setVerticalGroup(
             addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addConConfirmPanelLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conConfirmConfirmButton)
-                    .addComponent(conConfirmBackButton))
-                .addGap(36, 36, 36)
-                .addComponent(conConfirmCancelButton)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(addConConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conConfirmConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conConfirmBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(conConfirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         javax.swing.GroupLayout addNewContactPanelLayout = new javax.swing.GroupLayout(addNewContactPanel);
         addNewContactPanel.setLayout(addNewContactPanelLayout);
         addNewContactPanelLayout.setHorizontalGroup(
             addNewContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
             .addGroup(addNewContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addNewContactPanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -3390,7 +3756,7 @@ public class myMedsPage extends javax.swing.JFrame {
         );
         addNewContactPanelLayout.setVerticalGroup(
             addNewContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
             .addGroup(addNewContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addNewContactPanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -3433,15 +3799,22 @@ public class myMedsPage extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Doctor's Name:");
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add DocName Panel.png"))); // NOI18N
 
-        docNameIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        docNameIn.setBackground(new java.awt.Color(107, 112, 92));
+        docNameIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        docNameIn.setForeground(new java.awt.Color(255, 232, 214));
         docNameIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        docNameIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         docNameNextButton.setBackground(new java.awt.Color(0, 204, 51));
         docNameNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docNameNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        docNameNextButton.setText("NEXT");
+        docNameNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        docNameNextButton.setBorderPainted(false);
+        docNameNextButton.setContentAreaFilled(false);
+        docNameNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docNameNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/No Button Clicked.png"))); // NOI18N
         docNameNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docNameNextButtonActionPerformed(evt);
@@ -3451,7 +3824,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docNameBackButton.setBackground(new java.awt.Color(153, 153, 153));
         docNameBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docNameBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        docNameBackButton.setText("BACK");
+        docNameBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        docNameBackButton.setBorderPainted(false);
+        docNameBackButton.setContentAreaFilled(false);
+        docNameBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docNameBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         docNameBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docNameBackButtonActionPerformed(evt);
@@ -3461,7 +3838,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docNameCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         docNameCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docNameCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        docNameCancelButton.setText("CANCEL");
+        docNameCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        docNameCancelButton.setBorderPainted(false);
+        docNameCancelButton.setContentAreaFilled(false);
+        docNameCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        docNameCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         docNameCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docNameCancelButtonActionPerformed(evt);
@@ -3473,48 +3854,56 @@ public class myMedsPage extends javax.swing.JFrame {
         addDocNamePanelLayout.setHorizontalGroup(
             addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocNamePanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(docNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(docNameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addDocNamePanelLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addComponent(docNameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(docNameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                    .addGroup(addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addDocNamePanelLayout.createSequentialGroup()
+                            .addComponent(docNameBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(docNameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(docNameIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addDocNamePanelLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(docNameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         addDocNamePanelLayout.setVerticalGroup(
             addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocNamePanelLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel15)
-                .addGap(55, 55, 55)
-                .addComponent(docNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addGroup(addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(docNameNextButton)
-                    .addComponent(docNameBackButton))
-                .addGap(34, 34, 34)
-                .addComponent(docNameCancelButton)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(docNameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(addDocNamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docNameNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docNameBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(docNameCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         addDocPhonePanel.setBackground(new java.awt.Color(255, 232, 214));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Doctor's Phone Number:");
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add DocPhone Panel.png"))); // NOI18N
 
-        docPhoneIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        docPhoneIn.setBackground(new java.awt.Color(107, 112, 92));
+        docPhoneIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        docPhoneIn.setForeground(new java.awt.Color(255, 232, 214));
         docPhoneIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        docPhoneIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         docPhoneNextButton.setBackground(new java.awt.Color(0, 204, 51));
         docPhoneNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docPhoneNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        docPhoneNextButton.setText("NEXT");
+        docPhoneNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        docPhoneNextButton.setBorderPainted(false);
+        docPhoneNextButton.setContentAreaFilled(false);
+        docPhoneNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docPhoneNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         docPhoneNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docPhoneNextButtonActionPerformed(evt);
@@ -3524,7 +3913,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docPhoneBackButton.setBackground(new java.awt.Color(153, 153, 153));
         docPhoneBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docPhoneBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        docPhoneBackButton.setText("BACK");
+        docPhoneBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        docPhoneBackButton.setBorderPainted(false);
+        docPhoneBackButton.setContentAreaFilled(false);
+        docPhoneBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docPhoneBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         docPhoneBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docPhoneBackButtonActionPerformed(evt);
@@ -3534,7 +3927,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docPhoneCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         docPhoneCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docPhoneCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        docPhoneCancelButton.setText("CANCEL");
+        docPhoneCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        docPhoneCancelButton.setBorderPainted(false);
+        docPhoneCancelButton.setContentAreaFilled(false);
+        docPhoneCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        docPhoneCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         docPhoneCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docPhoneCancelButtonActionPerformed(evt);
@@ -3546,48 +3943,56 @@ public class myMedsPage extends javax.swing.JFrame {
         addDocPhonePanelLayout.setHorizontalGroup(
             addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocPhonePanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(docPhoneIn, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
-                    .addComponent(docPhoneCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addDocPhonePanelLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addComponent(docPhoneBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(docPhoneNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                    .addGroup(addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addDocPhonePanelLayout.createSequentialGroup()
+                            .addComponent(docPhoneBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(docPhoneNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(docPhoneIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addDocPhonePanelLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(docPhoneCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         addDocPhonePanelLayout.setVerticalGroup(
             addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocPhonePanelLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel16)
-                .addGap(55, 55, 55)
-                .addComponent(docPhoneIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addGroup(addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(docPhoneNextButton)
-                    .addComponent(docPhoneBackButton))
-                .addGap(34, 34, 34)
-                .addComponent(docPhoneCancelButton)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(docPhoneIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(addDocPhonePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docPhoneNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docPhoneBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(docPhoneCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         addDocSpecPanel.setBackground(new java.awt.Color(255, 232, 214));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Doctor's Specialty:");
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add DocSpec Panel.png"))); // NOI18N
 
-        docSpecIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        docSpecIn.setBackground(new java.awt.Color(107, 112, 92));
+        docSpecIn.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        docSpecIn.setForeground(new java.awt.Color(255, 232, 214));
         docSpecIn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        docSpecIn.setPreferredSize(new java.awt.Dimension(350, 45));
 
         docSpecNextButton.setBackground(new java.awt.Color(0, 204, 51));
         docSpecNextButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docSpecNextButton.setForeground(new java.awt.Color(0, 0, 0));
-        docSpecNextButton.setText("NEXT");
+        docSpecNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button.png"))); // NOI18N
+        docSpecNextButton.setBorderPainted(false);
+        docSpecNextButton.setContentAreaFilled(false);
+        docSpecNextButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docSpecNextButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Next Button Clicked.png"))); // NOI18N
         docSpecNextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docSpecNextButtonActionPerformed(evt);
@@ -3597,7 +4002,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docSpecBackButton.setBackground(new java.awt.Color(153, 153, 153));
         docSpecBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docSpecBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        docSpecBackButton.setText("BACK");
+        docSpecBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        docSpecBackButton.setBorderPainted(false);
+        docSpecBackButton.setContentAreaFilled(false);
+        docSpecBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docSpecBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         docSpecBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docSpecBackButtonActionPerformed(evt);
@@ -3607,7 +4016,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docSpecCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         docSpecCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docSpecCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        docSpecCancelButton.setText("CANCEL");
+        docSpecCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        docSpecCancelButton.setBorderPainted(false);
+        docSpecCancelButton.setContentAreaFilled(false);
+        docSpecCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        docSpecCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         docSpecCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docSpecCancelButtonActionPerformed(evt);
@@ -3619,49 +4032,46 @@ public class myMedsPage extends javax.swing.JFrame {
         addDocSpecPanelLayout.setHorizontalGroup(
             addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocSpecPanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(docSpecIn, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
-                    .addComponent(docSpecCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addDocSpecPanelLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addComponent(docSpecBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(docSpecNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                    .addGroup(addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addDocSpecPanelLayout.createSequentialGroup()
+                            .addComponent(docSpecBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(docSpecNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(docSpecIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addDocSpecPanelLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(docSpecCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         addDocSpecPanelLayout.setVerticalGroup(
             addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocSpecPanelLayout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel17)
-                .addGap(55, 55, 55)
-                .addComponent(docSpecIn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addGroup(addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(docSpecNextButton)
-                    .addComponent(docSpecBackButton))
+                .addGap(50, 50, 50)
+                .addComponent(docSpecIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(addDocSpecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docSpecNextButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docSpecBackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addComponent(docSpecCancelButton)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(docSpecCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         addDocConfirmPanel.setBackground(new java.awt.Color(255, 232, 214));
 
-        docConfirmList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        docConfirmList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane7.setViewportView(docConfirmList);
-
         docConfirmBackButton.setBackground(new java.awt.Color(153, 153, 153));
         docConfirmBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docConfirmBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        docConfirmBackButton.setText("BACK");
+        docConfirmBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        docConfirmBackButton.setBorderPainted(false);
+        docConfirmBackButton.setContentAreaFilled(false);
+        docConfirmBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docConfirmBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         docConfirmBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docConfirmBackButtonActionPerformed(evt);
@@ -3671,7 +4081,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docConfirmConfirmButton.setBackground(new java.awt.Color(0, 204, 51));
         docConfirmConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docConfirmConfirmButton.setForeground(new java.awt.Color(0, 0, 0));
-        docConfirmConfirmButton.setText("CONFIRM");
+        docConfirmConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button.png"))); // NOI18N
+        docConfirmConfirmButton.setBorderPainted(false);
+        docConfirmConfirmButton.setContentAreaFilled(false);
+        docConfirmConfirmButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docConfirmConfirmButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button Clicked.png"))); // NOI18N
         docConfirmConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docConfirmConfirmButtonActionPerformed(evt);
@@ -3681,51 +4095,63 @@ public class myMedsPage extends javax.swing.JFrame {
         docConfirmCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         docConfirmCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docConfirmCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        docConfirmCancelButton.setText("CANCEL");
+        docConfirmCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        docConfirmCancelButton.setBorderPainted(false);
+        docConfirmCancelButton.setContentAreaFilled(false);
+        docConfirmCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        docConfirmCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         docConfirmCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docConfirmCancelButtonActionPerformed(evt);
             }
         });
 
+        docConfirmList.setBackground(new java.awt.Color(107, 112, 92));
+        docConfirmList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        docConfirmList.setForeground(new java.awt.Color(255, 232, 214));
+        docConfirmList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        docConfirmList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        docConfirmList.setPreferredSize(new java.awt.Dimension(470, 300));
+        jScrollPane8.setViewportView(docConfirmList);
+
         javax.swing.GroupLayout addDocConfirmPanelLayout = new javax.swing.GroupLayout(addDocConfirmPanel);
         addDocConfirmPanel.setLayout(addDocConfirmPanelLayout);
         addDocConfirmPanelLayout.setHorizontalGroup(
             addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocConfirmPanelLayout.createSequentialGroup()
-                .addGroup(addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(docConfirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(addDocConfirmPanelLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(docConfirmBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(addDocConfirmPanelLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(docConfirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addDocConfirmPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(docConfirmConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(docConfirmBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(docConfirmConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         addDocConfirmPanelLayout.setVerticalGroup(
             addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addDocConfirmPanelLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(docConfirmConfirmButton)
-                    .addComponent(docConfirmBackButton))
-                .addGap(36, 36, 36)
-                .addComponent(docConfirmCancelButton)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addGroup(addDocConfirmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docConfirmConfirmButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docConfirmBackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(docConfirmCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout addNewDocPanelLayout = new javax.swing.GroupLayout(addNewDocPanel);
         addNewDocPanel.setLayout(addNewDocPanelLayout);
         addNewDocPanelLayout.setHorizontalGroup(
             addNewDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGap(0, 534, Short.MAX_VALUE)
             .addGroup(addNewDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addNewDocPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -3749,7 +4175,7 @@ public class myMedsPage extends javax.swing.JFrame {
         );
         addNewDocPanelLayout.setVerticalGroup(
             addNewDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
             .addGroup(addNewDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(addNewDocPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -3781,20 +4207,28 @@ public class myMedsPage extends javax.swing.JFrame {
         addNewContactPanel.setVisible(false);
 
         contactInfoPanel.setBackground(new java.awt.Color(255, 232, 214));
+        contactInfoPanel.setPreferredSize(new java.awt.Dimension(510, 600));
 
-        contactInfoList.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        contactInfoList.setBackground(new java.awt.Color(107, 112, 92));
+        contactInfoList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        contactInfoList.setForeground(new java.awt.Color(255, 232, 214));
         contactInfoList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         contactInfoList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane8.setViewportView(contactInfoList);
+        contactInfoList.setPreferredSize(new java.awt.Dimension(470, 300));
+        jScrollPane10.setViewportView(contactInfoList);
 
         contactEditButton.setBackground(new java.awt.Color(0, 204, 51));
         contactEditButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         contactEditButton.setForeground(new java.awt.Color(0, 0, 0));
-        contactEditButton.setText("Edit Contact");
+        contactEditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button.png"))); // NOI18N
+        contactEditButton.setBorderPainted(false);
+        contactEditButton.setContentAreaFilled(false);
+        contactEditButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        contactEditButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button Clicked.png"))); // NOI18N
         contactEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contactEditButtonActionPerformed(evt);
@@ -3804,7 +4238,11 @@ public class myMedsPage extends javax.swing.JFrame {
         contactInfoBackButton.setBackground(new java.awt.Color(255, 51, 51));
         contactInfoBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         contactInfoBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        contactInfoBackButton.setText("Back");
+        contactInfoBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        contactInfoBackButton.setBorderPainted(false);
+        contactInfoBackButton.setContentAreaFilled(false);
+        contactInfoBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        contactInfoBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         contactInfoBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contactInfoBackButtonActionPerformed(evt);
@@ -3815,26 +4253,26 @@ public class myMedsPage extends javax.swing.JFrame {
         contactInfoPanel.setLayout(contactInfoPanelLayout);
         contactInfoPanelLayout.setHorizontalGroup(
             contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contactInfoPanelLayout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addGroup(contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(contactInfoPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(contactInfoPanelLayout.createSequentialGroup()
-                        .addComponent(contactInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contactEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88))
+                        .addComponent(contactInfoBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(contactEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         contactInfoPanelLayout.setVerticalGroup(
             contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contactInfoPanelLayout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(contactInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactEditButton)
-                    .addComponent(contactInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(146, 146, 146))
+                    .addComponent(contactEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(147, 147, 147))
         );
 
         icePanel.add(contactInfoPanel, "card2");
@@ -3842,19 +4280,26 @@ public class myMedsPage extends javax.swing.JFrame {
 
         doctorInfoPanel.setBackground(new java.awt.Color(255, 232, 214));
 
-        doctorInfoList.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        doctorInfoList.setBackground(new java.awt.Color(107, 112, 92));
+        doctorInfoList.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        doctorInfoList.setForeground(new java.awt.Color(255, 232, 214));
         doctorInfoList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         doctorInfoList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane9.setViewportView(doctorInfoList);
+        doctorInfoList.setPreferredSize(new java.awt.Dimension(470, 300));
+        jScrollPane11.setViewportView(doctorInfoList);
 
         docEditButton.setBackground(new java.awt.Color(0, 204, 51));
         docEditButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docEditButton.setForeground(new java.awt.Color(0, 0, 0));
-        docEditButton.setText("Edit Doctor");
+        docEditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button.png"))); // NOI18N
+        docEditButton.setBorderPainted(false);
+        docEditButton.setContentAreaFilled(false);
+        docEditButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docEditButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Edit Button Clicked.png"))); // NOI18N
         docEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docEditButtonActionPerformed(evt);
@@ -3864,7 +4309,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docInfoBackButton.setBackground(new java.awt.Color(255, 51, 51));
         docInfoBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docInfoBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        docInfoBackButton.setText("BACK");
+        docInfoBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        docInfoBackButton.setBorderPainted(false);
+        docInfoBackButton.setContentAreaFilled(false);
+        docInfoBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docInfoBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         docInfoBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docInfoBackButtonActionPerformed(evt);
@@ -3876,25 +4325,25 @@ public class myMedsPage extends javax.swing.JFrame {
         doctorInfoPanelLayout.setHorizontalGroup(
             doctorInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(doctorInfoPanelLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(doctorInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(20, 20, 20)
+                .addGroup(doctorInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(doctorInfoPanelLayout.createSequentialGroup()
-                        .addComponent(docInfoBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(docEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(docInfoBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(docEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         doctorInfoPanelLayout.setVerticalGroup(
             doctorInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(doctorInfoPanelLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addGroup(doctorInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(docEditButton)
-                    .addComponent(docInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(doctorInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docInfoBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         icePanel.add(doctorInfoPanel, "card2");
@@ -3902,38 +4351,54 @@ public class myMedsPage extends javax.swing.JFrame {
 
         editContactPanel.setBackground(new java.awt.Color(255, 232, 214));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText("Contact Name: ");
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel20.setText("Phone Number:");
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel21.setText("Email:");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel22.setText("Relationship:");
 
-        conNameEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        conNameEdit.setBackground(new java.awt.Color(107, 112, 92));
+        conNameEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conNameEdit.setForeground(new java.awt.Color(255, 232, 214));
+        conNameEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
-        conPhoneEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        conPhoneEdit.setBackground(new java.awt.Color(107, 112, 92));
+        conPhoneEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conPhoneEdit.setForeground(new java.awt.Color(255, 232, 214));
+        conPhoneEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
-        conEmailEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        conEmailEdit.setBackground(new java.awt.Color(107, 112, 92));
+        conEmailEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conEmailEdit.setForeground(new java.awt.Color(255, 232, 214));
+        conEmailEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
-        conRelationEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        conRelationEdit.setBackground(new java.awt.Color(107, 112, 92));
+        conRelationEdit.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
+        conRelationEdit.setForeground(new java.awt.Color(255, 232, 214));
+        conRelationEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
         conEditBackButton.setBackground(new java.awt.Color(153, 153, 153));
         conEditBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conEditBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        conEditBackButton.setText("BACK");
+        conEditBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        conEditBackButton.setBorderPainted(false);
+        conEditBackButton.setContentAreaFilled(false);
+        conEditBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conEditBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         conEditBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conEditBackButtonActionPerformed(evt);
@@ -3943,7 +4408,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conEditConfirmButton.setBackground(new java.awt.Color(0, 204, 51));
         conEditConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conEditConfirmButton.setForeground(new java.awt.Color(0, 0, 0));
-        conEditConfirmButton.setText("CONFIRM");
+        conEditConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button.png"))); // NOI18N
+        conEditConfirmButton.setBorderPainted(false);
+        conEditConfirmButton.setContentAreaFilled(false);
+        conEditConfirmButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        conEditConfirmButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button Clicked.png"))); // NOI18N
         conEditConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conEditConfirmButtonActionPerformed(evt);
@@ -3953,7 +4422,11 @@ public class myMedsPage extends javax.swing.JFrame {
         conEditCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         conEditCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         conEditCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        conEditCancelButton.setText("CANCEL");
+        conEditCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        conEditCancelButton.setBorderPainted(false);
+        conEditCancelButton.setContentAreaFilled(false);
+        conEditCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        conEditCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         conEditCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conEditCancelButtonActionPerformed(evt);
@@ -3965,33 +4438,33 @@ public class myMedsPage extends javax.swing.JFrame {
         editContactPanelLayout.setHorizontalGroup(
             editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editContactPanelLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(10, 10, 10)
                 .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(conEditBackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(36, 36, 36)
                 .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conNameEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conPhoneEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conEmailEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conRelationEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editContactPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(editContactPanelLayout.createSequentialGroup()
-                        .addComponent(conEditCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(editContactPanelLayout.createSequentialGroup()
-                        .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(conNameEdit)
-                            .addComponent(conPhoneEdit)
-                            .addComponent(conEmailEdit)
-                            .addComponent(conRelationEdit)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editContactPanelLayout.createSequentialGroup()
-                                .addGap(0, 54, Short.MAX_VALUE)
-                                .addComponent(conEditConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(59, 59, 59))))
+                        .addComponent(conEditBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(conEditConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(conEditCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
         editContactPanelLayout.setVerticalGroup(
             editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editContactPanelLayout.createSequentialGroup()
-                .addGap(176, 176, 176)
+                .addGap(50, 50, 50)
                 .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(conNameEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -4008,12 +4481,12 @@ public class myMedsPage extends javax.swing.JFrame {
                     .addComponent(jLabel22)
                     .addComponent(conRelationEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
-                .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conEditConfirmButton)
-                    .addComponent(conEditBackButton))
-                .addGap(33, 33, 33)
-                .addComponent(conEditCancelButton)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGroup(editContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conEditBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conEditConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(conEditCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
 
         icePanel.add(editContactPanel, "card2");
@@ -4021,31 +4494,44 @@ public class myMedsPage extends javax.swing.JFrame {
 
         editDocPanel.setBackground(new java.awt.Color(255, 232, 214));
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel23.setText("Doctor Name: ");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel24.setText("Phone Number:");
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Mongolian Baiti", 1, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Specialty:");
 
+        docNameEdit.setBackground(new java.awt.Color(107, 112, 92));
         docNameEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        docNameEdit.setForeground(new java.awt.Color(255, 232, 214));
+        docNameEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
+        docPhoneEdit.setBackground(new java.awt.Color(107, 112, 92));
         docPhoneEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        docPhoneEdit.setForeground(new java.awt.Color(255, 232, 214));
+        docPhoneEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
+        docSpecEdit.setBackground(new java.awt.Color(107, 112, 92));
         docSpecEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        docSpecEdit.setForeground(new java.awt.Color(255, 232, 214));
+        docSpecEdit.setPreferredSize(new java.awt.Dimension(300, 45));
 
         docEditBackButton.setBackground(new java.awt.Color(153, 153, 153));
         docEditBackButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docEditBackButton.setForeground(new java.awt.Color(0, 0, 0));
-        docEditBackButton.setText("BACK");
+        docEditBackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button.png"))); // NOI18N
+        docEditBackButton.setBorderPainted(false);
+        docEditBackButton.setContentAreaFilled(false);
+        docEditBackButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docEditBackButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Back Button Clicked.png"))); // NOI18N
         docEditBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docEditBackButtonActionPerformed(evt);
@@ -4055,7 +4541,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docEditConfirmButton.setBackground(new java.awt.Color(0, 204, 51));
         docEditConfirmButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docEditConfirmButton.setForeground(new java.awt.Color(0, 0, 0));
-        docEditConfirmButton.setText("CONFIRM");
+        docEditConfirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button.png"))); // NOI18N
+        docEditConfirmButton.setBorderPainted(false);
+        docEditConfirmButton.setContentAreaFilled(false);
+        docEditConfirmButton.setPreferredSize(new java.awt.Dimension(145, 45));
+        docEditConfirmButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Confirm Button Clicked.png"))); // NOI18N
         docEditConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docEditConfirmButtonActionPerformed(evt);
@@ -4065,7 +4555,11 @@ public class myMedsPage extends javax.swing.JFrame {
         docEditCancelButton.setBackground(new java.awt.Color(255, 51, 51));
         docEditCancelButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         docEditCancelButton.setForeground(new java.awt.Color(0, 0, 0));
-        docEditCancelButton.setText("CANCEL");
+        docEditCancelButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button.png"))); // NOI18N
+        docEditCancelButton.setBorderPainted(false);
+        docEditCancelButton.setContentAreaFilled(false);
+        docEditCancelButton.setPreferredSize(new java.awt.Dimension(250, 45));
+        docEditCancelButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Cancel Button Clicked.png"))); // NOI18N
         docEditCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docEditCancelButtonActionPerformed(evt);
@@ -4077,31 +4571,31 @@ public class myMedsPage extends javax.swing.JFrame {
         editDocPanelLayout.setHorizontalGroup(
             editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editDocPanelLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(10, 10, 10)
                 .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(docEditBackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docNameEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docPhoneEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docSpecEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editDocPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(editDocPanelLayout.createSequentialGroup()
-                        .addComponent(docEditCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(197, 197, 197))
-                    .addGroup(editDocPanelLayout.createSequentialGroup()
-                        .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(docNameEdit)
-                            .addComponent(docPhoneEdit)
-                            .addComponent(docSpecEdit)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editDocPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(docEditConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(62, 62, 62))))
+                        .addComponent(docEditBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(docEditConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(docEditCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75))
         );
         editDocPanelLayout.setVerticalGroup(
             editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editDocPanelLayout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(docNameEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -4109,23 +4603,69 @@ public class myMedsPage extends javax.swing.JFrame {
                 .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(docPhoneEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(docSpecEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
-                .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(docEditConfirmButton)
-                    .addComponent(docEditBackButton))
-                .addGap(33, 33, 33)
-                .addComponent(docEditCancelButton)
-                .addGap(118, 118, 118))
+                .addGap(50, 50, 50)
+                .addGroup(editDocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(docEditBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(docEditConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(docEditCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125))
         );
 
         icePanel.add(editDocPanel, "card2");
         addNewContactPanel.setVisible(false);
 
         middlePanel01.add(icePanel, "card4");
+
+        profileOptionsPanel.setBackground(new java.awt.Color(255, 232, 214));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile Options Panel.png"))); // NOI18N
+
+        javax.swing.GroupLayout profileOptionsPanelLayout = new javax.swing.GroupLayout(profileOptionsPanel);
+        profileOptionsPanel.setLayout(profileOptionsPanelLayout);
+        profileOptionsPanelLayout.setHorizontalGroup(
+            profileOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profileOptionsPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel28)
+                .addGap(0, 0, 0))
+        );
+        profileOptionsPanelLayout.setVerticalGroup(
+            profileOptionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(profileOptionsPanelLayout.createSequentialGroup()
+                .addComponent(jLabel28)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        middlePanel01.add(profileOptionsPanel, "card2");
+        welcomePanel.setVisible(true);
+
+        upcomingRemindersPanel.setBackground(new java.awt.Color(255, 232, 214));
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Upcoming Reminders Panel.png"))); // NOI18N
+
+        javax.swing.GroupLayout upcomingRemindersPanelLayout = new javax.swing.GroupLayout(upcomingRemindersPanel);
+        upcomingRemindersPanel.setLayout(upcomingRemindersPanelLayout);
+        upcomingRemindersPanelLayout.setHorizontalGroup(
+            upcomingRemindersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upcomingRemindersPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addGap(0, 0, 0))
+        );
+        upcomingRemindersPanelLayout.setVerticalGroup(
+            upcomingRemindersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(upcomingRemindersPanelLayout.createSequentialGroup()
+                .addComponent(jLabel29)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        middlePanel01.add(upcomingRemindersPanel, "card2");
+        welcomePanel.setVisible(true);
 
         topPanel.setBackground(new java.awt.Color(255, 232, 214));
         topPanel.setPreferredSize(new java.awt.Dimension(510, 200));
@@ -4149,6 +4689,11 @@ public class myMedsPage extends javax.swing.JFrame {
         upcomingRemindersButton.setBorderPainted(false);
         buttonBar.add(upcomingRemindersButton);
         upcomingRemindersButton.setContentAreaFilled(false);
+        upcomingRemindersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upcomingRemindersButtonActionPerformed(evt);
+            }
+        });
 
         iceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICE Unclicked.png"))); // NOI18N
         iceButton.setBorderPainted(false);
@@ -4224,7 +4769,7 @@ public class myMedsPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profileOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileOptionsButtonActionPerformed
-        // TODO add your handling code here:
+        toProfileOptions();
     }//GEN-LAST:event_profileOptionsButtonActionPerformed
 
     private void addNewMedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewMedButtonActionPerformed
@@ -4259,6 +4804,7 @@ public class myMedsPage extends javax.swing.JFrame {
            if(selection == 0){
                rxNumberPanel.setVisible(false);
                dosagePanel.setVisible(true);
+               dosageNumberIn.requestFocus();
            }
         }else{
             getRXNumber();
@@ -4624,6 +5170,7 @@ public class myMedsPage extends javax.swing.JFrame {
 
     private void yesButtonAgainEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonAgainEditActionPerformed
         reminderLabelEdit.setVisible(true);
+        jLabel18.setVisible(true);
     }//GEN-LAST:event_yesButtonAgainEditActionPerformed
 
     private void yesButtonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonAActionPerformed
@@ -4681,11 +5228,14 @@ public class myMedsPage extends javax.swing.JFrame {
 
     private void noButtonAgainEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonAgainEditActionPerformed
         reminderLabelEdit.setVisible(false);
+        jLabel18.setVisible(false);
     }//GEN-LAST:event_noButtonAgainEditActionPerformed
 
     private void iceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iceButtonActionPerformed
         welcomePanel.setVisible(false);
         myMedsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/My Meds Unclicked.png")));
+        upcomingRemindersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Upcoming Reminders Unclicked.png")));
+        profileOptionsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile Options Unclicked.png")));
         iceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICE Clicked.png")));
         backToIceHome();    
     }//GEN-LAST:event_iceButtonActionPerformed
@@ -4694,6 +5244,9 @@ public class myMedsPage extends javax.swing.JFrame {
         welcomePanel.setVisible(false);
         iceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICE Unclicked.png")));
         myMedsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/My Meds Clicked.png")));
+        upcomingRemindersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Upcoming Reminders Unclicked.png")));
+        profileOptionsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile Options Unclicked.png")));
+
         backToMedsHome();
         
     }//GEN-LAST:event_myMedsButtonActionPerformed
@@ -5060,6 +5613,10 @@ public class myMedsPage extends javax.swing.JFrame {
            contactListPanel.setVisible(true);  
         }
     }//GEN-LAST:event_docEditCancelButtonActionPerformed
+
+    private void upcomingRemindersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upcomingRemindersButtonActionPerformed
+       toUpcomingReminders();
+    }//GEN-LAST:event_upcomingRemindersButtonActionPerformed
     
     /*
     The method that actually creates the connection to the local database
@@ -5169,7 +5726,7 @@ public class myMedsPage extends javax.swing.JFrame {
             frequencyTypeIn.setSelectedIndex(0);
             dosesProvIn.setText("");
             nameNextButton.setEnabled(false);
-            rxNumberNextButton.setEnabled(false);
+            rxNumberNextButton.setEnabled(true);
             dosageNextButton.setEnabled(false);
             frequencyNextButton.setEnabled(false);
             refillNextButton.setEnabled(false);
@@ -5436,8 +5993,10 @@ public class myMedsPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -5448,14 +6007,14 @@ public class myMedsPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JButton medInfoBackButton;
     private javax.swing.JButton medInfoEditButton;
     private javax.swing.JList<String> medInfoList;
@@ -5481,6 +6040,7 @@ public class myMedsPage extends javax.swing.JFrame {
     private javax.swing.JToggleButton noButtonRefillsEdit;
     private javax.swing.JToggleButton noButtonRemindEdit;
     private javax.swing.JButton profileOptionsButton;
+    private javax.swing.JPanel profileOptionsPanel;
     private javax.swing.JLabel refillInstruct;
     private javax.swing.JButton refillNextButton;
     private javax.swing.JTextField refillNumberEdit;
@@ -5514,6 +6074,7 @@ public class myMedsPage extends javax.swing.JFrame {
     private javax.swing.JLabel titleBar;
     private javax.swing.JPanel topPanel;
     private javax.swing.JButton upcomingRemindersButton;
+    private javax.swing.JPanel upcomingRemindersPanel;
     private javax.swing.JPanel welcomePanel;
     private javax.swing.JToggleButton yesButton;
     private javax.swing.JToggleButton yesButtonA;
